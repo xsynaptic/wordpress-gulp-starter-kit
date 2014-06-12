@@ -1,6 +1,6 @@
 <?php // ==== FUNCTIONS ==== //
 
-// Enqueue scripts
+// An example of how to enqueue scripts and stylesheets
 if ( !function_exists( 'my_theme_enqueue_scripts' ) ) : function my_theme_enqueue_scripts() {
 
   // Load theme-specific JavaScript with versioning based on last modified time; http://www.ericmmartin.com/5-tips-for-using-jquery-with-wordpress/
