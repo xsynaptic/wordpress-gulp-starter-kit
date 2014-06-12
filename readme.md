@@ -11,10 +11,10 @@ The core `gulpfile.js` has been adapted from [Matt Banks](http://mattbanks.me/gu
 * Download or clone the repo and install all dependencies using `npm install` and `bower install`.
 * Edit `gulpfile.js` and change the `project` variable to match the name of your theme.
 * Rename the `my-theme` directory to match the `project` variable. (Or just run `gulp`.)
-* Setup [Live Reload](http://livereload.com/) in your development browser. (Optional but recommended.)
+* Install a [Live Reload](http://livereload.com/) browser extension for ([Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) or Firefox.
 * Copy whatever WordPress starter theme you wish to use into your new theme directory and start hacking!
 
-Now run `gulp` to watch for changes, rebuild files as needed, and trigger live reload in your browser.
+Now run `gulp` to watch for changes, rebuild files as needed, and reload changes in your browser.
 
 
 
