@@ -1,12 +1,14 @@
+// Project configuration
+var project   = 'my-theme';
+
 // Initialization sequence
 var gulp      = require('gulp')
   , gutil     = require('gulp-util')
   , plugins   = require('gulp-load-plugins')({ camelize: true })
   , lr        = require('tiny-lr')
   , server    = lr()
+  , build     = './'+project+'/'; // Path to project build folder
 ;
-
-var build     = './build/';
 
 gulp.task('styles', function() {
   return gulp.src(['assets/src/scss/*.scss', '!assets/src/scss/_*.scss'])
@@ -20,7 +22,7 @@ gulp.task('styles', function() {
 
 gulp.task('plugins', function() {
   return gulp.src(['assets/src/js/plugins/*.js', 'assets/src/js/plugins.js'])
-  .pipe(plugins.concat('pendrell-plugins.js'))
+  .pipe(plugins.concat(project+'-plugins.js'))
   .pipe(gulp.dest('assets/staging'))
   .pipe(plugins.rename({ suffix: '.min' }))
   .pipe(plugins.uglify())
@@ -32,7 +34,7 @@ gulp.task('scripts', function() {
   return gulp.src(['assets/src/js/*.js', '!assets/src/js/plugins.js'])
   .pipe(plugins.jshint('.jshintrc'))
   .pipe(plugins.jshint.reporter('default'))
-  .pipe(plugins.concat('pendrell.js'))
+  .pipe(plugins.concat(project+'.js'))
   .pipe(gulp.dest('assets/staging'))
   .pipe(plugins.rename({ suffix: '.min' }))
   .pipe(plugins.uglify())
@@ -44,11 +46,16 @@ gulp.task('images', function() {
   return gulp.src('assets/src/img/**/*')
   .pipe(plugins.cache(plugins.imagemin({ optimizationLevel: 7, progressive: true, interlaced: true })))
   .pipe(plugins.livereload(server))
-  .pipe(gulp.dest(build + 'img/'));
+  .pipe(gulp.dest(build+'img/'));
+});
+
+gulp.task('php', function() {
+  return gulp.src(build+'**/*.php')
+  .pipe(plugins.livereload(server));
 });
 
 gulp.task('clean', function() {
-  return gulp.src(build + '**/.DS_Store', { read: false })
+  return gulp.src(build+'**/.DS_Store', { read: false })
   .pipe(plugins.clean());
 });
 
@@ -57,9 +64,10 @@ gulp.task('watch', function() {
     if (err) {
       return console.log(err)
     };
-    gulp.watch('assets/src/scss/*.scss', ['styles']); // Watch .scss files
-    gulp.watch('assets/src/js/**/*.js', ['plugins', 'scripts']); // Watch .js files
-    gulp.watch('assets/src/img/**/*', ['images']); // Watch image files
+    gulp.watch('assets/src/scss/*.scss', ['styles']); // Watch stylesheets
+    gulp.watch('assets/src/js/**/*.js', ['plugins', 'scripts']); // Watch scripts
+    gulp.watch('assets/src/img/**/*', ['images']); // Watch images
+    gulp.watch(build+'**/*.php', ['php']); // Watch templates
   });
 });
 
