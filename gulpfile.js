@@ -7,7 +7,7 @@ var gulp      = require('gulp')
   , plugins   = require('gulp-load-plugins')({ camelize: true })
   , lr        = require('tiny-lr')
   , server    = lr()
-  , build     = './'+project+'/'; // Path to project build folder
+  , build     = './'+project+'/';
 ;
 
 gulp.task('styles', function() {
