@@ -11,7 +11,7 @@ var project     = 'my-theme'
 // Initialization sequence
 var gulp        = require('gulp')
   , gutil       = require('gulp-util')
-  , plugins     = require('gulp-load-plugins')({ camelize: true })  // This loads all modules prefixed with "gulp-" to plugin.moduleName
+  , plugins     = require('gulp-load-plugins')({ camelize: true }) // This loads all modules prefixed with "gulp-" to plugin.moduleName
 ;
 
 
@@ -156,7 +156,7 @@ gulp.task('bower_components', function() {
 gulp.task('server', ['build'], function() {
   plugins.livereload.listen(35729, function (err) {
     if (err) {
-      return console.log(err)
+      return console.log(err);
     };
   });
 });
