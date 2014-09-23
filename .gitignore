@@ -32,4 +32,4 @@ sitemap.xml.gz
 .sass-cache
 bower_components
 node_modules
-assets/staging
+build
