@@ -5,6 +5,7 @@ var project     = 'my-theme'
   , build       = './build/'
   , dist        = './dist/'
   , source      = './src/' // 'source' instead of 'src' to avoid confusion with gulp.src
+  , lang        = 'languages/'
   , bower       = './bower_components/'
 ;
 
@@ -80,6 +81,16 @@ gulp.task('scripts-extras', function() {
 gulp.task('images', function() {
   return gulp.src(source+'**/*(*.png|*.jpg|*.jpeg|*.gif)')
   .pipe(gulp.dest(build));
+});
+
+
+
+// ==== LANGUAGES ==== //
+
+// Copy everything under `src/languages` indiscriminately
+gulp.task('languages', function() {
+  return gulp.src(source+lang+'**/*')
+  .pipe(gulp.dest(build+lang));
 });
 
 
@@ -177,7 +188,7 @@ gulp.task('watch', ['server'], function() {
 // ==== TASKS ==== //
 
 // Build styles and scripts; copy PHP files
-gulp.task('build', ['styles', 'scripts', 'images', 'php']);
+gulp.task('build', ['styles', 'scripts', 'images', 'languages', 'php']);
 
 // Release creates a clean distribution package under `dist` after running build, clean, and wipe in sequence
 gulp.task('dist', ['package']);
