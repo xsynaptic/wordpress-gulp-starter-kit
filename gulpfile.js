@@ -13,6 +13,7 @@ var project     = 'my-theme'
 var gulp        = require('gulp')
   , gutil       = require('gulp-util')
   , plugins     = require('gulp-load-plugins')({ camelize: true }) // This loads all modules prefixed with "gulp-" to plugin.moduleName
+  , del         = require('del')
 ;
 
 
@@ -108,18 +109,17 @@ gulp.task('php', function() {
 // ==== PACKAGING ==== //
 
 // Clean out junk files after build
-gulp.task('clean', ['build'], function() {
-  return gulp.src(build+'**/.DS_Store', { read: false })
-  .pipe(plugins.rimraf());
+gulp.task('clean', ['build'], function(cb) {
+  del([build+'**/.DS_Store'], cb)
 });
 
 // Totally wipe the contents of the distribution folder after doing a clean build
-gulp.task('wipe', ['clean'], function() {
-  return gulp.src(dist, {read: false })
-  .pipe(plugins.rimraf());
+gulp.task('wipe', ['clean'], function(cb) {
+  del([dist], cb)
 });
 
 // Prepare a distribution, the properly minified, uglified, and sanitized version of the theme ready for installation
+// This function will pull anything and everything in from `build` so you needn't write anything specific for files that don't match the filters
 gulp.task('package', ['wipe'], function() {
 
   // Define filters

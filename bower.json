@@ -1,6 +1,6 @@
 {
   "name": "wordpress-gulp-bower-sass",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/synapticism/wordpress-gulp-bower-sass",
   "authors": [
     "Alexander Synaptic <alexander@synapticism.com>"
@@ -21,7 +21,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    ".sass-cache",
+    "build",
+    "package.json"
   ],
   "dependencies": {
     "meyer-reset": "*",
