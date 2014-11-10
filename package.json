@@ -1,7 +1,7 @@
 {
   "name": "wordpress-gulp-bower-sass",
-  "version": "0.0.3",
-  "description": "A WordPress/Gulp/Bower/Sass starter kit.",
+  "version": "0.0.4",
+  "description": "A WordPress/Gulp/Bower/Sass starter kit",
   "homepage": "https://github.com/synapticism/wordpress-gulp-bower-sass",
   "repository": {
     "type": "git",
@@ -26,7 +26,6 @@
     "gulp-autoprefixer": "^0.0.10",
     "gulp-cache": "^0.2.2",
     "gulp-concat": "^2.3.4",
-    "gulp-filter": "^1.0.0",
     "gulp-imagemin": "^1.0.1",
     "gulp-jshint": "^1.8.4",
     "gulp-livereload": "^2.1.1",

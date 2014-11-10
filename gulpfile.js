@@ -3,7 +3,7 @@
 // Project configuration
 var project     = 'my-theme'
   , build       = './build/'
-  , dist        = './dist/'
+  , dist        = './dist/'+project+'/'
   , source      = './src/' // 'source' instead of 'src' to avoid confusion with gulp.src
   , lang        = 'languages/'
   , bower       = './bower_components/'
@@ -106,7 +106,9 @@ gulp.task('php', function() {
 
 
 
-// ==== PACKAGING ==== //
+// ==== DISTRIBUTION ==== //
+
+// Prepare a distribution, the properly minified, uglified, and sanitized version of the theme ready for installation
 
 // Clean out junk files after build
 gulp.task('clean', ['build'], function(cb) {
@@ -114,38 +116,32 @@ gulp.task('clean', ['build'], function(cb) {
 });
 
 // Totally wipe the contents of the distribution folder after doing a clean build
-gulp.task('wipe', ['clean'], function(cb) {
+gulp.task('dist-wipe', ['clean'], function(cb) {
   del([dist], cb)
 });
 
-// Prepare a distribution, the properly minified, uglified, and sanitized version of the theme ready for installation
-// This function will pull anything and everything in from `build` so you needn't write anything specific for files that don't match the filters
-gulp.task('package', ['wipe'], function() {
-
-  // Define filters
-  var styleFilter = plugins.filter(['**/*.css', '!**/*.min.css'])
-    , imageFilter = plugins.filter(['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '!screenshot.png'])
-  ;
-
-  // Take everything in the build folder
+// Copy everything in the build folder (except previously minified stylesheets) to the `dist/project` folder
+gulp.task('dist-copy', ['dist-wipe'], function() {
   return gulp.src([build+'**/*', '!'+build+'**/*.min.css'])
+  .pipe(gulp.dest(dist));
+});
 
-  // Compress existing stylesheets rather than duplicating previously compressed copies
-  .pipe(styleFilter)
+// Minify stylesheets in place
+gulp.task('dist-styles', ['dist-copy'], function() {
+  return gulp.src([dist+'**/*.css', '!'+dist+'**/*.min.css'])
   .pipe(plugins.minifyCss({ keepSpecialComments: 1 }))
-  .pipe(styleFilter.restore())
+  .pipe(gulp.dest(dist));
+});
 
-  // Compress images; @TODO: cache this
-  .pipe(imageFilter)
+// Optimize images in place
+gulp.task('dist-images', ['dist-styles'], function() {
+  return gulp.src([dist+'**/*.png', dist+'**/*.jpg', dist+'**/*.jpeg', dist+'**/*.gif', '!'+dist+'screenshot.png'])
   .pipe(plugins.imagemin({
     optimizationLevel: 7
   , progressive: true
   , interlaced: true
   }))
-  .pipe(imageFilter.restore())
-
-  // Send everything to the `dist/project` folder
-  .pipe(gulp.dest(dist+project+'/'));
+  .pipe(gulp.dest(dist));
 });
 
 
@@ -194,7 +190,7 @@ gulp.task('watch', ['server'], function() {
 gulp.task('build', ['styles', 'scripts', 'images', 'languages', 'php']);
 
 // Release creates a clean distribution package under `dist` after running build, clean, and wipe in sequence
-gulp.task('dist', ['package']);
+gulp.task('dist', ['dist-images']);
 
 // The default task runs watch which boots up the Livereload server after an initial build is finished
 gulp.task('default', ['watch']);
