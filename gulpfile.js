@@ -153,10 +153,10 @@ gulp.task('package', ['wipe'], function() {
 // ==== BOWER ==== //
 
 // Executed on `bower update` which is in turn triggered by `npm update`; use this to manually copy front-end dependencies into your working source folder
-gulp.task('bower_components', ['bower_normalize']);
+gulp.task('bower', ['bower-normalize']);
 
 // Used to get around Sass's inability to properly @import vanilla CSS
-gulp.task('bower_normalize', function() {
+gulp.task('bower-normalize', function() {
   return gulp.src(bower+'normalize.css/normalize.css')
   .pipe(plugins.rename('_base_normalize.scss'))
   .pipe(gulp.dest(source+'scss'));
