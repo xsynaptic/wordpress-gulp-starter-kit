@@ -70,7 +70,7 @@ A few handy tips from the [Bower documentation](https://bower.io):
 
 
 
-### WORKING WITH SASS
+## WORKING WITH SASS
 
 * [Sass](http://sass-lang.com/) files can be found in `/src/scss`. Gulp will not process Sass partials beginning with `_`; these need to be explicitly imported (see `style.scss` for an example... and if you wish to build any other CSS files simply names the Sass originals without the preceding underscore e.g. `editor-style.scss`.)
 * Bower components are in the path by default so you can `@import` Sass files directly, as seen in `_loader.scss` and `_reset.scss`.
@@ -94,6 +94,7 @@ Like images, PHP (and language) files can go anywhere under `src` and will be co
 
 ## TO DO
 
+* Sample [Headroom.js](http://wicky.nillia.ms/headroom.js/) integration walkthrough.
 * Yeoman generator ([open issue](https://github.com/synapticism/wordpress-gulp-bower-sass/issues/1); [some help here](http://yeoman.io/authoring/) would be awesome since I don't personally use Yeoman).
 * Sourcemaps with [gulp-sourcemaps](https://github.com/floridoo/gulp-sourcemaps) (waiting for the tech to mature; it's mostly other plugins that don't play nice with sourcemaps).
 * Switch to [gulp-sass](https://github.com/dlmanning/gulp-sass) (which is based on [Libsass](https://github.com/sass/libsass), a much more performant Sass compiler).
