@@ -1,0 +1,27 @@
+// ==== CONFIGURATION ==== //
+
+// Set all your configuration variables here!
+
+// Width of the overall site as well as the left and right content columns
+$width-site: 1000px;
+$width-left: 650px;
+$width-right: 350px;
+
+// Breakpoints
+$break-small: 480px;
+$break-medium: 620px;
+$break-large: 800px;
+
+// A standard margin
+$spacer: 30px;
+
+// A modest palette; see `_library.scss` for the color() function
+$color: (
+  "text": #3A3A3A,
+  "link": #3A3A86,
+  "link-muted": #686868,
+  "header-background": #eee
+);
+
+// An example of a switch; flip to false and the Headroom.js styling won't be included in `style.css`
+$plugin-headroom: true;

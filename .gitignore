@@ -33,3 +33,5 @@ sitemap.xml.gz
 bower_components
 node_modules
 build
+dist
+_normalize.scss

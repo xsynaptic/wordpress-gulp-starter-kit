@@ -1,0 +1,46 @@
+// ==== MENUS ==== //
+
+// Inline menu; used in header and footer navigation
+.inline-menu {
+  @extend %clearfix;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    & > li {
+      float: left;
+      margin-right: $spacer/2;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    > li > ul {
+      @extend %hide; // Hide submenus for the sake of simplicity; obviously you'd want to remove this when you apply your own styling
+    }
+  }
+}
+
+
+
+// Hide header menu
+.menu-header ul {
+  display: none;
+  @include media-above($break-medium) {
+    display: block;
+  }
+  &.toggled {
+    display: block;
+  }
+}
+
+
+
+// Menu toggle for mobile phones and small screens
+.responsive-menu-toggle {
+  @include media-above($break-medium) {
+    display: none;
+  }
+  &.toggled {
+    display: none;
+  }
+}

@@ -1,0 +1,23 @@
+// ==== PLUGINS ==== //
+
+// This file contains styling specific to various plugins
+
+// Headroom.js plugin, added to demonstrate how easy it is to integrate JavaScript into WordPress with Gulp
+@if ($plugin-headroom) {
+  .headroom + .wrap-main { // Only applied to .wrap-main when preceded by .headroom (i.e. the plugin is active)
+    margin-top: 120px;
+  }
+  .headroom {
+    height: 120px;
+    position: fixed;
+    top: 0;
+    transition: transform 180ms linear;
+    width: 100%;
+  }
+  .headroom--pinned {
+    transform: translateY(0%);
+  }
+  .headroom--unpinned {
+    transform: translateY(-100%);
+  }
+}

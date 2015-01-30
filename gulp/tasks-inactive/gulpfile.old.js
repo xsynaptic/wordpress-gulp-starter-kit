@@ -1,5 +1,8 @@
 // ==== SETUP ==== //
 
+// This is the old Gulp file from the first version of this starter kit; I'll leave it here for a while in case anyone would prefer a simpler approach
+// To see the rest of the repo at this stage of development check out: https://github.com/synapticism/wordpress-gulp-bower-sass/tree/88c329c3021497e699cd4ab74363a6487d9b22af
+
 // Project configuration
 var project     = 'my-theme'
   , build       = './build/'

@@ -1,0 +1,39 @@
+// ==== GENERAL ==== //
+
+html {
+  font-size: 18px;
+}
+body {
+  color: color("text");
+  font-family: "Noto Serif", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  line-height: 1.44444;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Merriweather, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  line-height: 1.22222;
+}
+a {
+  border: 0;
+  color: inherit;
+  text-decoration: none;
+  transition: color .8s ease-out;
+  .wrap-content &,
+  .inline-menu & {
+    color: color("link");
+  }
+  .wrap-sidebar & {
+    color: color("link-muted");
+  }
+}
+figure {
+  margin: 0;
+}
+img {
+  height: auto;
+  max-width: 100%;
+}

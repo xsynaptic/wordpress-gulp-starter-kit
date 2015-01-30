@@ -1,15 +1,21 @@
 /*!
-Theme Name: WordPress-Gulp-Bower-Sass
+Theme Name: Voidance
 Theme URI: https://github.com/synapticism/wordpress-gulp-bower-sass
 Author: Alexander Synaptic
-Author URI: http://alexandersynaptic.com
+Author URI: http://synapticism.com
 Description:
-Version: 0.0.4
-License: GNU General Public Licence 2.0
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags:
+Version: 0.0.1
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl.txt
+Tags: light, responsive-layout, right-sidebar, starter-theme, two-column, translation-ready, white
 Text Domain:
 Domain Path: /languages/
 */
 
-@import "base";
+@import "loader";
+@import "general";
+@import "layout";
+@import "menus";
+@import "navigation";
+@import "sidebar";
+@import "plugins";
