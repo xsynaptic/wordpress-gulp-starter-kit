@@ -4,7 +4,7 @@ html {
   font-size: 18px;
 }
 body {
-  color: color("text");
+  color: color(text);
   font-family: "Noto Serif", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   line-height: 1.44444;
 }
@@ -24,10 +24,10 @@ a {
   transition: color .8s ease-out;
   .wrap-content &,
   .inline-menu & {
-    color: color("link");
+    color: color(link);
   }
   .wrap-sidebar & {
-    color: color("link-muted");
+    color: color(link-muted);
   }
 }
 figure {

@@ -10,20 +10,20 @@
   @include scut-hide-visually;
 }
 %spacer-above {
-  margin-top: $spacer;
+  margin-top: spacer();
 }
 %spacer-above-2 {
-  margin-top: $spacer*2;
+  margin-top: spacer(2);
 }
 %spacer-above-3 {
-  margin-top: $spacer*3;
+  margin-top: spacer(3);
 }
 %spacer-below {
-  margin-bottom: $spacer;
+  margin-bottom: spacer();
 }
 %spacer-below-2 {
-  margin-bottom: $spacer*2;
+  margin-bottom: spacer(2);
 }
 %spacer-below-3 {
-  margin-bottom: $spacer*3;
+  margin-bottom: spacer(3);
 }

@@ -3,17 +3,17 @@
 // Set all your configuration variables here!
 
 // Width of the overall site as well as the left and right content columns
-$width-site: 1000px;
-$width-left: 650px;
-$width-right: 350px;
+$width-site:    1000px;
+$width-left:    650px;
+$width-right:   350px;
 
 // Breakpoints
-$break-small: 480px;
-$break-medium: 620px;
-$break-large: 800px;
+$break-small:   480px;
+$break-medium:  620px;
+$break-large:   800px;
 
 // A standard margin
-$spacer: 30px;
+$spacer:        30px;
 
 // A modest palette; see `_library.scss` for the color() function
 $color: (

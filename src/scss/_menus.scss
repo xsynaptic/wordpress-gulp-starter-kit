@@ -9,7 +9,7 @@
     padding: 0;
     & > li {
       float: left;
-      margin-right: $spacer/2;
+      margin-right: spacer(1/2);
       &:last-of-type {
         margin-right: 0;
       }
