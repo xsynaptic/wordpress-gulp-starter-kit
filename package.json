@@ -10,8 +10,11 @@
   "keywords": [
     "wordpress",
     "wordpress-theme",
+    "wordpress-starter-theme",
+    "theme",
     "gulp",
     "bower",
+    "composer",
     "sass",
     "browsersync",
     "livereload"
@@ -20,7 +23,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexander Synaptic <alexander@synapticism.com>",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "main": "gulpfile.js",
   "private": true,
   "devDependencies": {

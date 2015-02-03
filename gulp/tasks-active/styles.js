@@ -3,7 +3,7 @@
 var gulp        = require('gulp')
   , gutil       = require('gulp-util')
   , plugins     = require('gulp-load-plugins')({ camelize: true })
-  , config      = require('../config').styles
+  , config      = require('../../gulpconfig').styles
 ;
 
 // Build stylesheets from source Sass files, autoprefix, and make a minified copy (for debugging)

@@ -10,8 +10,8 @@
                 <h1><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
               </header>
               <footer class="entry-meta">
-                <?php printf( __( 'Posted on %1$s by %2$s. ', 'voidance' ), get_the_date(), get_the_author() ); ?>
-                <?php _e( 'Categories: ', 'voidance' ); the_category( ', ' ); echo '. '; ?>
+                <?php printf( __( 'Posted on %1$s by %2$s. ', 'voidx' ), get_the_date(), get_the_author() ); ?>
+                <?php _e( 'Categories: ', 'voidx' ); the_category( ', ' ); echo '. '; ?>
               </footer>
               <div class="entry-content">
                 <?php the_content(); ?>
@@ -22,16 +22,16 @@
         } else { ?>
           <article id="post-0" class="post no-results not-found">
             <header class="entry-header">
-              <h1><?php _e( 'Not found', 'voidance' ); ?></h1>
+              <h1><?php _e( 'Not found', 'voidx' ); ?></h1>
             </header>
             <div class="entry-content">
-              <p><?php _e( 'Sorry, but your request could not be completed.', 'voidance' ); ?></p>
+              <p><?php _e( 'Sorry, but your request could not be completed.', 'voidx' ); ?></p>
               <?php get_search_form(); ?>
             </div>
           </article>
         <?php } ?>
         </main>
-        <?php voidance_post_navigation(); ?>
+        <?php voidx_post_navigation(); ?>
       </section>
     </div>
   </div>

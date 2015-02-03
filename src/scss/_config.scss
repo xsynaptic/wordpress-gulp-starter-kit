@@ -17,10 +17,11 @@ $spacer:        30px;
 
 // A modest palette; see `_library.scss` for the color() function
 $color: (
-  "text": #3A3A3A,
-  "link": #3A3A86,
-  "link-muted": #686868,
-  "header-background": #eee
+  text: #333,
+  link: steelblue,
+  link-muted: slategray,
+  header-background: whitesmoke,
+  body-background: whitesmoke
 );
 
 // An example of a switch; flip to false and the Headroom.js styling won't be included in `style.css`

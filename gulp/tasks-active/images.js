@@ -2,7 +2,7 @@
 
 var gulp        = require('gulp')
   , plugins     = require('gulp-load-plugins')({ camelize: true })
-  , config      = require('../config').images
+  , config      = require('../../gulpconfig').images
 ;
 
 // Copy changed images from the source folder to `build` (fast)

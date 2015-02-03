@@ -3,7 +3,7 @@
 var gulp        = require('gulp')
   , plugins     = require('gulp-load-plugins')({ camelize: true })
   , merge       = require('merge-stream')
-  , config      = require('../config').scripts
+  , config      = require('../../gulpconfig').scripts
 ;
 
 // Check core scripts for errors

@@ -18,7 +18,7 @@
           <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
         </div>
         <nav id="site-navigation" class="site-navigation" role="navigation">
-          <button id="responsive-menu-toggle" class="responsive-menu-toggle" role="button"><?php _e( 'Menu', 'voidance' ); ?></button>
+          <button id="responsive-menu-toggle" class="responsive-menu-toggle" role="button"><?php _e( 'Menu', 'voidx' ); ?></button>
           <?php wp_nav_menu( array( 'theme_location' => 'header', 'menu_class' => 'menu-header inline-menu' ) ); ?>
         </nav>
       </header>

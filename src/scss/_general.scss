@@ -4,8 +4,9 @@ html {
   font-size: 18px;
 }
 body {
+  background: color(body-background);
   color: color(text);
-  font-family: "Noto Serif", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Nimbus Sans L", "Liberation Sans", Arimo, sans-serif;
   line-height: 1.44444;
 }
 h1,
@@ -14,7 +15,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Merriweather, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-family: "Titillium Web", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, Geneva, sans-serif;
   line-height: 1.22222;
 }
 a {

@@ -1,11 +1,12 @@
 // ==== CONFIGURATION ==== //
 
 // Project paths
-var project     = 'voidance'
+var project     = 'voidx'
   , src         = './src/'
   , build       = './build/'
   , dist        = './dist/'+project+'/'
   , bower       = './bower_components/'
+  , composer    = './vendor/'
 ;
 
 // Project settings

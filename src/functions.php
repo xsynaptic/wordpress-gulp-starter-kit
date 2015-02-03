@@ -20,10 +20,10 @@ require_once( trailingslashit( get_stylesheet_directory() ) . 'inc/navigation.ph
 // == SETUP == //
 
 // Only the bare minimum to get the theme up and running
-function voidance_setup() {
+function voidx_setup() {
 
   // Language loading
-  load_theme_textdomain( 'voidance', trailingslashit( get_template_directory() ) . 'languages' );
+  load_theme_textdomain( 'voidx', trailingslashit( get_template_directory() ) . 'languages' );
 
   // HTML5 support; mainly here to get rid of some nasty default styling that WordPress used to inject
   add_theme_support( 'html5', array( 'search-form', 'gallery' ) );
@@ -35,22 +35,22 @@ function voidance_setup() {
     $content_width = (int) 960;
 
   // Register header and footer menus
-  register_nav_menu( 'header', __( 'Header menu', 'voidance' ) );
-  register_nav_menu( 'footer', __( 'Footer menu', 'voidance' ) );
+  register_nav_menu( 'header', __( 'Header menu', 'voidx' ) );
+  register_nav_menu( 'footer', __( 'Footer menu', 'voidx' ) );
 
 }
-add_action( 'after_setup_theme', 'voidance_setup', 11 );
+add_action( 'after_setup_theme', 'voidx_setup', 11 );
 
 // Sidebar declaration
-function voidance_widgets_init() {
+function voidx_widgets_init() {
   register_sidebar( array(
-    'name'          => __( 'Main sidebar', 'voidance' ),
+    'name'          => __( 'Main sidebar', 'voidx' ),
     'id'            => 'sidebar-main',
-    'description'   => __( 'Appears to the right side of most posts and pages.', 'voidance' ),
+    'description'   => __( 'Appears to the right side of most posts and pages.', 'voidx' ),
     'before_widget' => '<aside id="%1$s" class="widget %2$s">',
     'after_widget'  => '</aside>',
     'before_title'  => '<h2>',
     'after_title'   => '</h2>'
   ) );
 }
-add_action( 'widgets_init', 'voidance_widgets_init' );
+add_action( 'widgets_init', 'voidx_widgets_init' );

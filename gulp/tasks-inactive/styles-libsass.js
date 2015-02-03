@@ -2,7 +2,7 @@
 
 var gulp        = require('gulp')
   , plugins     = require('gulp-load-plugins')({ camelize: true })
-  , config      = require('../config').styles
+  , config      = require('../../gulpconfig').styles
 ;
 
 // This task is a future proof-of-concept for when Libsass approaches feature parity with the original Sass library

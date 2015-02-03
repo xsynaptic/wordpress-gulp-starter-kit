@@ -2,7 +2,7 @@
 
 var gulp        = require('gulp')
   , browsersync = require('browser-sync')
-  , config      = require('../config').browsersync
+  , config      = require('../../gulpconfig').browsersync
 ;
 
 // BrowserSync: be sure to setup `proxy` in `config.js

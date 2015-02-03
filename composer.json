@@ -1,0 +1,26 @@
+{
+  "name": "synapticism/wordpress-gulp-bower-sass",
+  "description": "A WordPress/Gulp/Bower/Sass starter kit",
+  "keywords": [
+    "wordpress",
+    "wordpress-theme",
+    "wordpress-starter-theme",
+    "theme",
+    "gulp",
+    "bower",
+    "composer",
+    "sass",
+    "browsersync",
+    "livereload"
+  ],
+  "homepage": "https://github.com/synapticism/wordpress-gulp-bower-sass",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Alexander Synaptic",
+      "email": "alexander@synapticism.com",
+      "homepage": "http://alexandersynaptic.com"
+    }
+  ],
+  "type": "library"
+}

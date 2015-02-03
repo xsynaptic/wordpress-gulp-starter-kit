@@ -3,7 +3,7 @@
 var gulp        = require('gulp')
   , plugins     = require('gulp-load-plugins')({ camelize: true })
   , del         = require('del')
-  , config      = require('../config').utils
+  , config      = require('../../gulpconfig').utils
 ;
 
 // Totally wipe the contents of the `dist` folder to prepare for a clean build; additionally trigger Bower-related tasks to ensure we have the latest source files
