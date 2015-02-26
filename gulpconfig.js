@@ -83,12 +83,12 @@ module.exports = {
     }
   , dist: {
       src: [dist+'**/*.css', '!'+dist+'**/*.min.css']
-    , minify: { keepSpecialComments: 1 }
+    , minify: { keepSpecialComments: 1, roundingPrecision: 3 }
     , dest: dist
     }
   , autoprefixer: { browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'] }
   , rename: { suffix: '.min' }
-  , minify: { keepSpecialComments: 1 }
+  , minify: { keepSpecialComments: 1, roundingPrecision: 3 }
   , rubySass: { // Don't forget to run `gem install sass`; Compass is not included by default
       loadPath: bower // Adds the `bower_components` directory to the load path so you can @import directly
     , precision: 8

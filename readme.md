@@ -15,7 +15,7 @@ Local development is now facilitated by your choice of [BrowserSync](http://www.
 * Install Sass with `gem install sass` (requires Ruby).
 * Optional: [install Composer](https://getcomposer.org/doc/00-intro.md) (a PHP package manager).
 * Download or clone this repo and install all dependencies by running `npm install` (which will automatically trigger `bower install`). This will fetch all dependencies listed in both `package.json` (which includes back-end tools like Gulp plugins and Browsersync) and `bower.json` (which includes front-end dependencies e.g. jQuery plugins, Sass frameworks, icon libraries, and so on).
-* Edit `gulpconfig.js` and, *at the very least*, change the `project` variable to match the name of your theme. If you like the way this workflow is setup you shouldn't need to edit any of the files under `gulp/tasks-active` just yet.
+* Edit `gulpconfig.js` and, *at the very least*, change the `project` variable to match the name of your theme. If you like the way this workflow is setup you shouldn't need to edit any of the files under `gulpfile.js/tasks-active` just yet.
 * [BrowserSync](http://www.browsersync.io/) setup: assuming you have a local development environment setup all you should need to do is enter the URL into the `proxy` setting in `gulpconfig.js`. (Why use BrowserSync? It's fast, awesome, and allows for simultaneous responsive development across multiple devices.)
 * [LiveReload](http://livereload.com/) setup: install a browser extension for [Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) or Firefox. (Why use LiveReload? It does the job without complications.)
 * Run `gulp` and start hacking!
@@ -53,7 +53,7 @@ There is also a `gulp` folder containing the configuration file and two task dir
 
 [Gulp](http://gulpjs.com/) is an extremely powerful tool for automating tasks from the command line. If you're new to Gulp but coming from a WordPress background I recommend reading tutorials by [Matt Banks](http://mattbanks.me/gulp-wordpress-development/) and [Mark Goodyear](http://markgoodyear.com/2014/01/getting-started-with-gulp/). I also learned a lot from a post by [Dan Trello](http://viget.com/extend/gulp-browserify-starter-faq) (and have integrated much of his approach into this project) but it might be a bit more opaque for newcomers.
 
-To get started try running `gulp` from the command line. This should build a working copy of the included theme. The other command you will use from time to time is `gulp dist`, which builds a distribution copy.
+To get started try running `gulp` from the command line. This fires `gulpfile.js/index.js` and should build a working copy of the included theme. The other command you will use from time to time is `gulp dist`, which builds a distribution copy.
 
 Configuration is handled by a single file: `gulpconfig.js`. If you leave the directory structure intact there won't be too much that needs changing here but I can think of two non-obvious components you might want to modify or at least look at:
 
@@ -122,6 +122,13 @@ That's all there is to it. Now this script can be switched on or off in two conf
 * RTL support with [gulp-rtlcss](https://github.com/jjlharrison/gulp-rtlcss)?
 * Explore using Gulp for I18n (a quick scan revealed nothing obviously useful).
 * Remember to update filenames when updating to HTML5 History API 4.2 (next release).
+* Feature requests welcome; [open an issue](https://github.com/synapticism/wordpress-gulp-bower-sass/issues)!
+
+
+
+## SEE ALSO
+
+Like the approach but prefer something more mature, sophisticated, and opinionated? Check out [Sage](https://roots.io/sage/) and [Bedrock](https://github.com/roots/bedrock) from [Roots](http://roots.io/).
 
 
 
