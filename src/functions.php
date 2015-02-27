@@ -1,7 +1,5 @@
 <?php // ==== FUNCTIONS ==== //
 
-// == CONFIGURATION == //
-
 // Load the configuration file for this installation; all options are set here
 if ( is_readable( trailingslashit( get_stylesheet_directory() ) . 'functions-config.php' ) )
   require_once( trailingslashit( get_stylesheet_directory() ) . 'functions-config.php' );
@@ -12,12 +10,8 @@ require_once( trailingslashit( get_stylesheet_directory() ) . 'functions-config-
 // An example of how to manage loading front-end assets (scripts, styles, and fonts)
 require_once( trailingslashit( get_stylesheet_directory() ) . 'inc/assets.php' );
 
-// Required to demonstrate WP AJAX Page Loader (as WordPress doesn't have any simply built-in post navigation functions)
+// Required to demonstrate WP AJAX Page Loader (as WordPress doesn't ship with simple post navigation functions)
 require_once( trailingslashit( get_stylesheet_directory() ) . 'inc/navigation.php' );
-
-
-
-// == SETUP == //
 
 // Only the bare minimum to get the theme up and running
 function voidx_setup() {

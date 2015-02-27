@@ -19,7 +19,7 @@
         </div>
         <nav id="site-navigation" class="site-navigation" role="navigation">
           <button id="responsive-menu-toggle" class="responsive-menu-toggle" role="button"><?php _e( 'Menu', 'voidx' ); ?></button>
-          <?php wp_nav_menu( array( 'theme_location' => 'header', 'menu_class' => 'menu-header inline-menu' ) ); ?>
+          <?php wp_nav_menu( array( 'theme_location' => 'header', 'menu_class' => 'menu-header menu-inline' ) ); ?>
         </nav>
       </header>
     </div>

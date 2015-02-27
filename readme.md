@@ -24,9 +24,9 @@ Local development is now facilitated by your choice of [BrowserSync](http://www.
 
 ## MINIMUM VIABLE THEME
 
-Previously this project shipped without a working theme included. I figured that with all the great starter themes out there (for instance, [_s](https://github.com/Automattic/_s), [Roots](https://github.com/roots/roots), and [Bones](https://github.com/eddiemachado/bones)) it wouldn't be hard to drop one in and start theming. I don't personally use any of these so I was a little surprised to discover how tricky this can be. Starter themes, despite their "bare bones" reputation, are often bulky and opinionated Some even ship with their own build processes in place!
+Previously this project shipped without a working theme included. I figured that with all the great starter themes out there (for instance, [_s](https://github.com/Automattic/_s), [Roots](https://github.com/roots/roots), and [Bones](https://github.com/eddiemachado/bones)) it wouldn't be hard to drop one in and start theming. I don't personally use any of these so I was a little surprised to discover how tricky this can be. Starter themes, despite their "bare bones" reputation, are often bulky and opinionated. Some even ship with their own build processes already in place!
 
-It seems there is a need for what I'd call a *minimum viable theme*: a truly bare bones WordPress starter theme featuring only the essentials to get up and running. For the purposes of this project I have created such a theme, tentatively named `voidx`. It isn't pretty but it works well enough to show off some of the possibilities inherent in working with Gulp, Bower, and Sass. Feel free to play with it or clear it out from this repo as you wish.
+It seems there is a need for what I'd call a *minimum viable theme*: a truly bare bones WordPress starter theme featuring only the essentials to get up and running, something that you can assess at a glance. For the purposes of this project I have created such a theme, tentatively named `voidx`. It isn't pretty but it works well enough to show off some of the possibilities inherent in working with Gulp, Bower, and Sass. Feel free to play with it or clear it out from this repo as you wish. All files under `src` can be replaced by your own files.
 
 There are two components worth a closer look, however:
 
@@ -79,7 +79,7 @@ A few handy tips from the [Bower documentation](https://bower.io):
 * Bower components are in the path by default so you can `@import` Sass files directly, as seen in `_loader.scss` and `_reset.scss`.
 * The `build` folder is provisioned with regular and minified versions of all stylesheets but `dist` only contains minified versions for production. This approach allows for easy debugging during development.
 * This starter kit ships with [Normalize.css](https://necolas.github.io/normalize.css/) (active by default) and [Eric Meyer's reset](http://meyerweb.com/eric/tools/css/reset/) (inactive by default).
-* Compass is *not* included as [Autoprefixer](https://github.com/ai/autoprefixer) eliminates the need for vendor prefixing (which is what most Sass frameworks focus on these days). Instead I have included [Scut](https://davidtheclark.github.io/scut/), a minimalist library of useful Sass mixins and functions for the post-vendor prefixing era.
+* Compass is *not* included as [Autoprefixer](https://github.com/ai/autoprefixer), a [PostCSS](https://github.com/postcss/postcss) plugin, eliminates the need for vendor prefixing (which is what most Sass frameworks focus on these days). Instead I have included [Scut](https://davidtheclark.github.io/scut/), a minimalist library of useful Sass mixins and functions for the post-vendor prefixing era.
 
 
 
@@ -134,7 +134,7 @@ Like the approach but prefer something more mature, sophisticated, and opinionat
 
 ## CREDITS
 
-The initial version of this repo featured a `gulpfile.js` adapted from [Matt Banks](http://mattbanks.me/gulp-wordpress-development/). Additional credit is due to [Mark Goodyear](http://markgoodyear.com/2014/01/getting-started-with-gulp/). The current version is largely based on Dan Tello's excellent [gulp-starter](https://github.com/greypants/gulp-starter).
+The initial version of this repo featured a `gulpfile.js` adapted from [Matt Banks](http://mattbanks.me/gulp-wordpress-development/). Additional credit is due to [Mark Goodyear](http://markgoodyear.com/2014/01/getting-started-with-gulp/). The current version is largely based on Dan Tello's excellent [gulp-starter](https://github.com/greypants/gulp-starter). The theme templates included in this project ultimately descend from Twenty Twelve.
 
 
 
@@ -142,4 +142,4 @@ The initial version of this repo featured a `gulpfile.js` adapted from [Matt Ban
 
 [GPL 3.0](http://www.gnu.org/licenses/gpl.txt).
 
-You are encouraged to link back to [my web site](http://synapticism.com) and/or [this GitHub repository](https://github.com/synapticism/wordpress-gulp-bower-sass) if you find this at all useful :)
+You are encouraged to link back to [my web site](http://synapticism.com) and/or [this GitHub repository](https://github.com/synapticism/wordpress-gulp-bower-sass) if you find this at all useful. I am also available via [Twitter](https://twitter.com/synapticism) for the occasional support inquiry.

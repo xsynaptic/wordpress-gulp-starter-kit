@@ -8,7 +8,7 @@ if ( !function_exists( 'voidx_enqueue_scripts' ) ) : function voidx_enqueue_scri
 
   $script_name = '';                // Empty by default, may be populated by conditionals below
   $script_vars = array();           // An empty array that can be filled with variables to send to front-end scripts
-  $script_handle = 'voidx';      // A generic script handle
+  $script_handle = 'voidx';         // A generic script handle
   $suffix = '.min';                 // The suffix for minified scripts
   $ns = 'wp';                       // Namespace
 
@@ -64,14 +64,8 @@ if ( !function_exists( 'voidx_enqueue_scripts' ) ) : function voidx_enqueue_scri
   wp_register_style( 'voidx-style', get_stylesheet_uri(), $dependencies = array(), filemtime( get_template_directory() . '/style.css' ) );
   wp_enqueue_style( 'voidx-style' );
 
-  // Google Web Fonts loader
-  $font_url = voidx_get_font_url();
-  if ( !empty( $font_url ) )
-    wp_enqueue_style( 'voidx-fonts', esc_url_raw( $font_url ), array(), null );
-
 } endif;
-if ( !is_admin() )
-  add_action( 'wp_enqueue_scripts', 'voidx_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'voidx_enqueue_scripts' );
 
 
 
@@ -83,31 +77,10 @@ function voidx_update_script_vars( $script_vars = array() ) {
     $script_vars = array_merge( $script_vars, array(
       'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
       'nameSpaced'    => array(
-        'test1'         => __( 'Testing 1, 2, 3!', 'pendrell' ),
-        'test2'         => __( 'This is easier than it looks :)', 'pendrell' )
+        'test1'         => __( 'Testing 1, 2, 3!', 'voidx' ),
+        'test2'         => __( 'This is easier than it looks :)', 'voidx' )
     ) ) );
   }
   return $script_vars;
 }
 add_filter( 'voidx_script_vars', 'voidx_update_script_vars' );
-
-
-
-// Simplified Google Font loading; adapted from Twenty Twelve
-if ( !function_exists( 'voidx_get_font_url' ) ) : function voidx_get_font_url( $fonts = '' ) {
-  $font_url = '';
-
-  // Allows us to pass a Google Web Font declaration as needed
-  if ( empty( $fonts ) )
-    $fonts = VOIDX_GOOGLE_FONTS ? VOIDX_GOOGLE_FONTS : 'Open+Sans:400italic,700italic,400,700'; // Default back to Open Sans
-
-  // Encode commas and pipe characters; explanation: http://www.designfordigital.com/2014/04/07/google-fonts-bad-value-css-validate/
-  $fonts = str_replace( ',', '%2C', $fonts );
-  $fonts = str_replace( '|', '%7C', $fonts );
-
-  $protocol = is_ssl() ? 'https' : 'http';
-
-  $font_url = "$protocol://fonts.googleapis.com/css?family=" . $fonts;
-
-  return $font_url;
-} endif;

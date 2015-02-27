@@ -47,7 +47,9 @@
 }
 .wrap-footer {
   @extend %wrap;
-  padding-bottom: spacer();
+  background: color(header-background);
+  padding-bottom: spacer(2);
+  padding-top: spacer(1/2);
   @include media-above($break-large) {
     padding-left: spacer(2);
     padding-right: spacer(2);
