@@ -3,7 +3,7 @@
 // Inline menu; used in header and footer navigation
 .menu-inline {
   @extend %clearfix;
-  ul {
+  &, ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
