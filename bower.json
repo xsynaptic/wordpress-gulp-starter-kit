@@ -29,11 +29,10 @@
   ],
   "devDependencies": {
     "meyer-reset": "*",
-    "normalize.css": "^3.0.2",
-    "scut": "~1.1.0",
-    "html5-history-api": "^4.1.15",
+    "normalize.css": "^3.0.3",
+    "scut": "^1.1.2",
+    "html5-history-api": "^4.2.0",
     "spin.js": "^2.0.2",
-    "wp-ajax-page-loader": "^0.0.2",
-    "headroom.js": "~0.7.0"
+    "wp-ajax-page-loader": "^0.1.1"
   }
 }

@@ -20,9 +20,5 @@ $color: (
   text: #333,
   link: steelblue,
   link-muted: steelblue,
-  header-background: whitesmoke,
   body-background: white
 );
-
-// An example of a switch; flip to false and the Headroom.js styling won't be included in `style.css`
-$plugin-headroom: true;

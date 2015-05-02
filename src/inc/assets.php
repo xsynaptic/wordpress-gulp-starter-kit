@@ -20,10 +20,6 @@ if ( !function_exists( 'voidx_enqueue_scripts' ) ) : function voidx_enqueue_scri
   // Note: bundles require less HTTP requests at the expense of addition caching hits when different scripts are requested
   // You could also load one main bundle on every page with supplementary scripts as needed (e.g. for commenting)
 
-  // Headroom.js (hr)
-  if ( VOIDX_SCRIPTS_HEADROOM )
-    $script_name .= '-hr';
-
   // WP AJAX Page Loader (pg8); this requires a bit more setup as outlined in the documentation: https://github.com/synapticism/wp-ajax-page-loader
   $script_vars_pg8 = '';
   if ( VOIDX_SCRIPTS_PAGELOAD && ( is_archive() || is_home() || is_search() ) ) {

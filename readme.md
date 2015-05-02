@@ -2,7 +2,7 @@
 
 Designing WordPress themes the old-fashioned way is time-consuming and error-prone. Automating the build process allows us to integrate best practices into our workflow while saving time. This project is a *starter kit* for developing highly optimized WordPress themes with [Gulp](http://gulpjs.com/), [Bower](http://bower.io/), and [Sass](http://sass-lang.com/). This is *not* meant to be a starter theme or framework (although I have included a *minimum viable theme* to demonstrate some of the possibilities). It is, instead, a kind of *project scaffolding* and *example workflow* for modern and efficient WordPress theme development.
 
-The latest version of this starter kit (released February 2015) features a modular Gulp file design inspired by Dan Tello's excellent [gulp-starter](https://github.com/greypants/gulp-starter). Configuration is isolated from the tasks themselves to make it easier to change paths and modify settings. It is more complicated than [the approach originally described on my blog](http://synapticism.com/dev/wordpress-theme-development-with-gulp-bower-and-sass/) but also far more powerful.
+The latest version of this starter kit features a modular Gulp file design inspired by Dan Tello's excellent [gulp-starter](https://github.com/greypants/gulp-starter). Configuration is isolated from the tasks themselves to make it easier to change paths and modify settings. It is more complicated than [the approach originally described on my blog](http://synapticism.com/dev/wordpress-theme-development-with-gulp-bower-and-sass/) but also far more powerful.
 
 Local development is now facilitated by your choice of [BrowserSync](http://www.browsersync.io/) or [LiveReload](http://livereload.com/) (the default choice).
 
@@ -12,7 +12,7 @@ Local development is now facilitated by your choice of [BrowserSync](http://www.
 
 * [Install npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
 * Install Gulp (`npm install gulp -g`) and Bower (`npm install bower -g`).
-* Install Sass with `gem install sass` (requires Ruby).
+* Optional: install Sass with `gem install sass` (requires Ruby) *or* switch the Sass compiler to `libsass` in the configuration file.
 * Optional: [install Composer](https://getcomposer.org/doc/00-intro.md) (a PHP package manager).
 * Download or clone this repo and install all dependencies by running `npm install` (which will automatically trigger `bower install`). This will fetch all dependencies listed in both `package.json` (which includes back-end tools like Gulp plugins and Browsersync) and `bower.json` (which includes front-end dependencies e.g. jQuery plugins, Sass frameworks, icon libraries, and so on).
 * Edit `gulpconfig.js` and, *at the very least*, change the `project` variable to match the name of your theme. If you like the way this workflow is setup you shouldn't need to edit any of the files under `gulpfile.js/tasks-active` just yet.
@@ -22,7 +22,7 @@ Local development is now facilitated by your choice of [BrowserSync](http://www.
 
 
 
-## MINIMUM VIABLE THEME
+## VOIDX: A MINIMUM VIABLE THEME
 
 Previously this project shipped without a working theme included. I figured that with all the great starter themes out there (for instance, [_s](https://github.com/Automattic/_s), [Roots](https://github.com/roots/roots), and [Bones](https://github.com/eddiemachado/bones)) it wouldn't be hard to drop one in and start theming. I don't personally use any of these so I was a little surprised to discover how tricky this can be. Starter themes, despite their "bare bones" reputation, are often bulky and opinionated. Some even ship with their own build processes already in place!
 
@@ -75,11 +75,13 @@ A few handy tips from the [Bower documentation](https://bower.io):
 
 ## WORKING WITH SASS
 
-* [Sass](http://sass-lang.com/) files can be found in `/src/scss`. Gulp will not process Sass partials beginning with `_`; these need to be explicitly imported (see `style.scss` for an example... and if you wish to build any other CSS files simply names the Sass originals without the preceding underscore e.g. `editor-style.scss`.)
+* This package now supports either [gulp-ruby-sass](https://github.com/sindresorhus/gulp-ruby-sass/) (which requires [the original Ruby implementation of Sass](https://github.com/sass/sass)) or [gulp-sass](https://www.npmjs.org/package/gulp-sass) (based on the newer, experimental, and faster [libsass](https://github.com/sass/libsass)). Switch `styles.compiler` as needed! For reference: [Sass compatibility table](https://sass-compatibility.github.io/).
+* [Sass](http://sass-lang.com/) files can be found in `/src/scss`. Gulp will not process Sass partials beginning with `_`; these need to be explicitly imported (see `style.scss` for an example). On the other hand, if you want to output any other CSS files just drop the underscore *e.g.* `editor-style.scss`.
 * Bower components are in the path by default so you can `@import` Sass files directly, as seen in `_loader.scss` and `_reset.scss`.
 * The `build` folder is provisioned with regular and minified versions of all stylesheets but `dist` only contains minified versions for production. This approach allows for easy debugging during development.
 * This starter kit ships with [Normalize.css](https://necolas.github.io/normalize.css/) (active by default) and [Eric Meyer's reset](http://meyerweb.com/eric/tools/css/reset/) (inactive by default).
-* Compass is *not* included as [Autoprefixer](https://github.com/ai/autoprefixer), a [PostCSS](https://github.com/postcss/postcss) plugin, eliminates the need for vendor prefixing (which is what most Sass frameworks focus on these days). Instead I have included [Scut](https://davidtheclark.github.io/scut/), a minimalist library of useful Sass mixins and functions for the post-vendor prefixing era.
+* Compass is *not* included as [Autoprefixer](https://github.com/ai/autoprefixer), a [PostCSS](https://github.com/postcss/postcss) plugin, eliminates the need for vendor prefixing (which is what most Sass frameworks focus on these days). Instead I have included [Scut](https://davidtheclark.github.io/scut/), a minimalist library of useful Sass mixins and functions for the post-vendor prefixing era. This is easily removed if you're not interested in using it.
+* [Sourcemaps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/?redirect_from_locale=tw) are generated by [gulp-sourcemaps](https://github.com/floridoo/gulp-sourcemaps) when compiling with libsass.
 
 
 
@@ -99,13 +101,23 @@ Like images, PHP (and language) files can go anywhere under `src` and will be co
 
 Let's say you run across a cool project like [Headroom.js](http://wicky.nillia.ms/headroom.js/) and decide you'd like to try it out. Here's how you would do that with the tools and workflow outlined in this repo:
 
-* `bower install headroom.js -D`.
-* Look up the path to the script and add the appropriate entries to `scripts.bundles` and `scripts.chunks` in `gulpconfig.js`. The key name of `scripts.bundles` should match `$script_name` (below). Since this script is meant to be loaded on every page I bundled it with the `core` script.
-* I'd like to make this script optional. This requires a bit more work:
+* `bower install headroom.js -D`. This will save the package to your `bower.json` file.
+* Look up the path to the script and add the appropriate entries to `scripts.bundles` and `scripts.chunks` in `gulpconfig.js`. The key name of `scripts.bundles` should match `$script_name` (below). Since this script is meant to be loaded on every page it is safe to bundle it with the `core` script.
+* To make this script *optional* requires a bit more work:
     * Add an option to `functions-config-defaults.php`: `defined( 'VOIDX_SCRIPTS_HEADROOM' ) || define( 'VOIDX_SCRIPTS_HEADROOM', true );`.
     * Add the switch to `inc/assets.php`: `if ( VOIDX_SCRIPTS_HEADROOM ) : $script_name .= '-hr';`.
     * Add an option to `scss/_config.scss` to allow for the styling to be turned on or off: `$plugin-headroom: true;`.
     * Add the necessary styling to `scss/_plugins.scss` wrapped in a conditional check: `@if ($plugin-headroom) { // Style }`.
+    * Create an additional script at `src/js/headroom.js` to invoke the main script (code to follow).
+
+```language-javascript
+// Invoke Headroom.js
+;(function($){
+  $(function(){
+    $("#wrap-header").headroom({ offset: 60 });
+  });
+}(jQuery));
+```
 
 That's all there is to it. Now this script can be switched on or off in two configuration files. WordPress will automatically load the correct script bundle for all JavaScript-based functionality (rather than loading lots of little scripts for each feature).
 
@@ -114,8 +126,6 @@ That's all there is to it. Now this script can be switched on or off in two conf
 ## TO DO
 
 * Yeoman generator ([open issue](https://github.com/synapticism/wordpress-gulp-bower-sass/issues/1); [some help here](http://yeoman.io/authoring/) would be awesome since I don't personally use Yeoman).
-* Sourcemaps with [gulp-sourcemaps](https://github.com/floridoo/gulp-sourcemaps) (waiting for the tech to mature; it's mostly other plugins that don't play nice with sourcemaps).
-* Switch to [gulp-sass](https://github.com/dlmanning/gulp-sass) (which is based on [Libsass](https://github.com/sass/libsass), a much more performant Sass compiler).
 * A proper wipe/clean task chain (waiting for Gulp 4).
 * Better error handling (waiting for Gulp 4).
 * [Reduce unnecessary wrapper plugins](https://github.com/sogko/gulp-recipes/tree/master/unnecessary-wrapper-gulp-plugins).

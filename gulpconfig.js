@@ -54,14 +54,11 @@ module.exports = {
   scripts: {
     bundles: { // Bundles are defined by a name and an array of chunks to concatenate; warning: it's up to you to manage dependencies!
       core: ['core']
-    , hr: ['headroom', 'core']
-    , hr_pg8: ['headroom', 'pg8', 'core']
     , pg8: ['pg8', 'core']
     }
   , chunks: { // Chunks are arrays of globs matching source files that combine to provide specific functionality
       core: [src+'js/navigation.js', src+'js/core.js']
-    , headroom: [bower+'headroom.js/dist/headroom.js', bower+'headroom.js/dist/jQuery.headroom.js', src+'js/headroom.js']
-    , pg8: [bower+'html5-history-api/history.iegte8.js', bower+'spin.js/spin.js', bower+'spin.js/jquery.spin.js', bower+'wp-ajax-page-loader/wp-ajax-page-loader.js', src+'js/page-loader.js']
+    , pg8: [bower+'html5-history-api/history.js', bower+'spin.js/spin.js', bower+'spin.js/jquery.spin.js', bower+'wp-ajax-page-loader/wp-ajax-page-loader.js', src+'js/page-loader.js']
     }
   , dest: build+'js/' // Where the scripts end up
   , lint: {
@@ -86,17 +83,18 @@ module.exports = {
     , minify: { keepSpecialComments: 1, roundingPrecision: 3 }
     , dest: dist
     }
+  , compiler: 'libsass' // Choose a Sass compiler: 'libsass' or 'ruby-sass'
   , autoprefixer: { browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'] }
   , rename: { suffix: '.min' }
   , minify: { keepSpecialComments: 1, roundingPrecision: 3 }
-  , rubySass: { // Don't forget to run `gem install sass`; Compass is not included by default
+  , rubySass: { // Requires the Ruby implementation of Sass; run `gem install sass` if you use this; Compass is not included by default
       loadPath: bower // Adds the `bower_components` directory to the load path so you can @import directly
-    , precision: 8
+    , precision: 6
     , 'sourcemap=none': true // Not yet ready for prime time! Sass 3.4 has srcmaps on by default but this causes some problems from the Gulp toolchain
   }
-  , sass: { // For future reference: settings for Libsass, a promising project that hasn't reached feature parity with Ruby Sass just yet
+  , libsass: { // Requires the libsass implementation of Sass
       includePaths: [bower]
-    , precision: 8
+    , precision: 6
     }
   },
 

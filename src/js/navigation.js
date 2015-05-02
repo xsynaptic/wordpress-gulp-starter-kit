@@ -3,7 +3,7 @@
 // Menu toggle script adapted from _s: https://github.com/Automattic/_s
 ;(function() {
   var nav       = document.getElementById('site-navigation'),
-      menu      = nav.getElementsByTagName('ul')[0],
+      menu      = document.getElementById('responsive-menu'),
       button    = document.getElementById('responsive-menu-toggle');
 
   // Early exit if we're missing anything essential
