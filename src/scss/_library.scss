@@ -1,0 +1,51 @@
+// ==== LIBRARY ==== //
+
+// Mixins, functions, and other non-declarative things
+
+// == MEDIA QUERIES == //
+
+// Master media query mixin; only for use with screens, of course; should work with raw integers or pixel values; adapted from Kipple: https://github.com/synapticism/kipple
+@mixin media($min-query: null, $max-query: null) {
+  @if $min-query == null and $max-query == null {
+    @warn "Mixin k-media() received two null values; no output."
+  }
+  @else if $max-query == null {
+    @media screen and (min-width: $min-query+0px) { @content; }
+  }
+  @else if $min-query == null {
+    @media screen and (max-width: $max-query+0px) { @content; }
+  }
+  @else {
+    @media screen and (min-width: $min-query+0px) and (max-width: $max-query+0px) { @content; }
+  }
+}
+@mixin media-above($min-query) {
+  @include media($min-query, null) { @content; }
+}
+@mixin media-below($max-query) {
+  @include media(null, $max-query - 1) { @content; }
+}
+@mixin media-between($min-query: null, $max-query: null) {
+  @if $min-query == null or $max-query == null {
+    @warn "Mixin media-between() received a null value."
+  }
+  @include media($min-query, $max-query - 1) { @content; }
+}
+
+
+
+// == LAYOUT == //
+
+// Margins and positioning helper function
+@function spacer($val: 1) {
+  @return $spacer * $val + 0px;
+}
+
+
+
+// == PALETTE == //
+
+// A simple function to retrieve a color from the array; adapted from http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+@function color($request) {
+  @return map-get($color, $request);
+}

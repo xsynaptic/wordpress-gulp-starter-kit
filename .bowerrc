@@ -1,6 +1,6 @@
 {
-  "directory": "bower_components",
+  "directory": "./bower_components",
   "scripts": {
-    "postinstall": "gulp bower_components"
+    "postinstall": "gulp bower"
   }
 }

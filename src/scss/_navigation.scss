@@ -1,0 +1,19 @@
+// ==== NAVIGATION ==== //
+
+.nav-posts {
+  @extend %clearfix;
+  @extend %spacer-below-3;
+}
+.nav-previous {
+  box-sizing: border-box;
+  float: left;
+  padding-right: spacer(1/2);
+  width: 50%;
+}
+.nav-next {
+  box-sizing: border-box;
+  float: right;
+  padding-left: spacer(1/2);
+  text-align: right;
+  width: 50%;
+}

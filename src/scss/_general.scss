@@ -1,0 +1,40 @@
+// ==== GENERAL ==== //
+
+html {
+  font-size: 18px;
+}
+body {
+  background: color(body-background);
+  color: color(text);
+  font-family: "Helvetica Neue", Helvetica, Arial, "Nimbus Sans L", "Liberation Sans", Arimo, sans-serif;
+  line-height: 1.44444;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  line-height: 1.22222;
+}
+a {
+  border: 0;
+  color: inherit;
+  text-decoration: none;
+  transition: color .8s ease-out;
+  .wrap-content &,
+  .menu-inline & {
+    color: color(link);
+  }
+  .wrap-sidebar & {
+    color: color(link-muted);
+  }
+}
+figure {
+  margin: 0;
+}
+img {
+  height: auto;
+  max-width: 100%;
+}

@@ -1,0 +1,79 @@
+// ==== LAYOUT ==== //
+
+// These wrappers allow for backgrounds and layout options to be defined for each of the four sections (header, content, sidebar, and footer)
+// There is also a fifth meta-wrapper to bind content and sidebar on large screens
+
+// A general wrapper for various site elements
+%wrap {
+  box-sizing: border-box; // Makes life a little easier
+  padding: 0 spacer() 0 spacer();
+}
+.wrap-header {
+  @extend %wrap;
+  background: color(header-background);
+  padding-bottom: spacer(1/2);
+  padding-top: spacer(1/2);
+  @include media-above($break-large) {
+    padding-left: spacer(2);
+    padding-right: spacer(2);
+  }
+}
+.wrap-main { // Wrapper around content and sidebar
+  @extend %clearfix;
+  @include media-above($break-large) {
+    @include scut-center-block($width-site);
+    padding: 0 spacer(2) 0 spacer(2);
+  }
+}
+.wrap-content {
+  @extend %wrap;
+  padding: spacer();
+  @include media-above($break-large) {
+    float: left;
+    padding-left: 0;
+    padding-right: spacer();
+    width: percentage( ( $width-left + spacer() ) / $width-site );
+  }
+}
+.wrap-sidebar {
+  @extend %wrap;
+  padding: spacer();
+  @include media-above($break-large) {
+    float: right;
+    padding-left: spacer();
+    padding-right: 0;
+    width: percentage( 1 - ( ( $width-left + spacer() ) / $width-site ) );
+  }
+}
+.wrap-footer {
+  @extend %wrap;
+  background: color(header-background);
+  padding-bottom: spacer(2);
+  padding-top: spacer(1/2);
+  @include media-above($break-large) {
+    padding-left: spacer(2);
+    padding-right: spacer(2);
+  }
+}
+.site-header,
+.site-footer {
+  @include scut-center-block($width-site);
+}
+.site-title {
+  margin-top: 0;
+}
+.site-description {
+  @extend %hide;
+}
+.site-content {
+  @extend %spacer-below;
+  article {
+    @extend %spacer-below-2;
+  }
+}
+.alignright {
+  float: right;
+}
+.alignleft {
+  float: left;
+}

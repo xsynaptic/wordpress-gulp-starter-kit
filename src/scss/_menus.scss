@@ -1,0 +1,42 @@
+// ==== MENUS ==== //
+
+// Inline menu; used in header and footer navigation
+.menu-inline {
+  @extend %clearfix;
+  &, ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    & > li {
+      float: left;
+      margin-right: spacer(1/2);
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    > li > ul {
+      @extend %hide; // Hide submenus for the sake of simplicity; obviously you'd want to remove this when you apply your own styling
+    }
+  }
+}
+
+// Responsive header menu; this container ID handles the fact that `wp_nav_menu()` defaults back to `wp_page_menu()` when no menu is active
+#responsive-menu {
+  display: none;
+  @include media-above($break-medium) {
+    display: block;
+  }
+  &.toggled {
+    display: block;
+  }
+}
+
+// Menu toggle for mobile phones and small screens
+#responsive-menu-toggle {
+  @include media-above($break-medium) {
+    display: none;
+  }
+  &.toggled {
+    display: none;
+  }
+}
