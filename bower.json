@@ -30,7 +30,7 @@
   "devDependencies": {
     "meyer-reset": "*",
     "normalize.css": "^3.0.3",
-    "scut": "^1.1.2",
+    "scut": "^1.1.3",
     "html5-history-api": "^4.2.0",
     "spin.js": "^2.0.2",
     "wp-ajax-page-loader": "^0.1.1"
