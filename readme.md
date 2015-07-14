@@ -26,7 +26,7 @@ Local development is now facilitated by your choice of [BrowserSync](http://www.
 
 Previously this project shipped without a working theme included. I figured that with all the great starter themes out there (for instance, [_s](https://github.com/Automattic/_s), [Roots](https://github.com/roots/roots), and [Bones](https://github.com/eddiemachado/bones)) it wouldn't be hard to drop one in and start theming. I don't personally use any of these so I was a little surprised to discover how tricky this can be. Starter themes, despite their "bare bones" reputation, are often bulky and opinionated. Some even ship with their own build processes already in place!
 
-It seems there is a need for what I'd call a *minimum viable theme*: a truly bare bones WordPress starter theme featuring only the essentials to get up and running, something that you can assess at a glance. For the purposes of this project I have created such a theme, tentatively named `voidx`. It isn't pretty but it works well enough to show off some of the possibilities inherent in working with Gulp, Bower, and Sass. Feel free to play with it or clear it out from this repo as you wish. All files under `src` can be replaced by your own files.
+It seems there is a need for what I'd call a *minimum viable theme*: a truly bare bones WordPress starter theme featuring only the essentials to get up and running, something that you can assess at a glance. For the purposes of this project I have created such a theme, tentatively named `voidx`. It isn't pretty but it works well enough to show off some of the possibilities of Gulp, Bower, and Sass. Feel free to play with or discard it as you wish. All files under `src` can be replaced by your own files.
 
 There are two components worth a closer look, however:
 
@@ -132,7 +132,8 @@ That's all there is to it. Now this script can be switched on or off in two conf
 * RTL support with [gulp-rtlcss](https://github.com/jjlharrison/gulp-rtlcss)?
 * Explore using Gulp for I18n (a quick scan revealed nothing obviously useful).
 * Remember to update filenames when updating to HTML5 History API 4.2 (next release).
-* Feature requests welcome; [open an issue](https://github.com/synapticism/wordpress-gulp-bower-sass/issues)!
+
+Feature requests and bug reports welcome; [open an issue](https://github.com/synapticism/wordpress-gulp-bower-sass/issues)! Please note that I intend to reign in scope creep on this project :)
 
 
 
@@ -150,6 +151,4 @@ The initial version of this repo featured a `gulpfile.js` adapted from [Matt Ban
 
 ## LICENSE
 
-[GPL 3.0](http://www.gnu.org/licenses/gpl.txt).
-
-You are encouraged to link back to [my web site](http://synapticism.com) and/or [this GitHub repository](https://github.com/synapticism/wordpress-gulp-bower-sass) if you find this at all useful. I am also available via [Twitter](https://twitter.com/synapticism) for the occasional support inquiry.
+Licensed under the [GPL 3.0](http://www.gnu.org/licenses/gpl.txt). You are encouraged to link back to [my web site](http://synapticism.com), [development blog](http://synapticism.com/dev), and/or [this GitHub repository](https://github.com/synapticism/wordpress-gulp-bower-sass) if you find this at all useful.
