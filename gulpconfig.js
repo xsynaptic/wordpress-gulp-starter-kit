@@ -112,7 +112,7 @@ module.exports = {
     clean: [build+'**/.DS_Store'] // A glob matching junk files to clean out of `build`
   , wipe: [dist] // Clean this out before creating a new distribution copy
   , dist: {
-      src: [build+'**/*', '!'+build+'**/*.min.css']
+      src: [build+'**/*', '!'+build+'**/*.min.css*']
     , dest: dist
     }
   },
