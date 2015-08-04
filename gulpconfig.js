@@ -80,7 +80,6 @@ module.exports = {
     }
   , dist: {
       src: [dist+'**/*.css', '!'+dist+'**/*.min.css']
-    , minify: { keepSpecialComments: 1, roundingPrecision: 3 }
     , dest: dist
     }
   , compiler: 'libsass' // Choose a Sass compiler: 'libsass' or 'ruby-sass'
