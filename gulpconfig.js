@@ -94,6 +94,9 @@ module.exports = {
   , libsass: { // Requires the libsass implementation of Sass
       includePaths: [bower] // Adds the `bower_components` directory to the load path so you can @import directly
     , precision: 6
+    , onError: function(err) {
+        return console.log(err);
+      }
     }
   },
 
