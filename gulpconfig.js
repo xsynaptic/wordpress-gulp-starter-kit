@@ -80,7 +80,6 @@ module.exports = {
     }
   , dist: {
       src: [dist+'**/*.css', '!'+dist+'**/*.min.css']
-    , minify: { keepSpecialComments: 1, roundingPrecision: 3 }
     , dest: dist
     }
   , compiler: 'libsass' // Choose a Sass compiler: 'libsass' or 'ruby-sass'
@@ -95,6 +94,9 @@ module.exports = {
   , libsass: { // Requires the libsass implementation of Sass
       includePaths: [bower] // Adds the `bower_components` directory to the load path so you can @import directly
     , precision: 6
+    , onError: function(err) {
+        return console.log(err);
+      }
     }
   },
 
@@ -113,7 +115,7 @@ module.exports = {
     clean: [build+'**/.DS_Store'] // A glob matching junk files to clean out of `build`
   , wipe: [dist] // Clean this out before creating a new distribution copy
   , dist: {
-      src: [build+'**/*', '!'+build+'**/*.min.css']
+      src: [build+'**/*', '!'+build+'**/*.min.css*']
     , dest: dist
     }
   },
