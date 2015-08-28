@@ -43,9 +43,19 @@
 
 
 
-// == PALETTE == //
+// == SETTINGS == //
+
+// Master config function
+@function config($map, $key) {
+  @return unquote(map-get($map, $key));
+}
 
 // A simple function to retrieve a color from the array; adapted from http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
 @function color($request) {
-  @return map-get($color, $request);
+  @return config($_color, $request);
+}
+
+// Same thing for theme metadata
+@function metadata($request) {
+  @return config($_metadata, $request);
 }
