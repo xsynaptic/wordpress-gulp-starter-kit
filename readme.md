@@ -26,7 +26,7 @@ Local development is now facilitated by your choice of [BrowserSync](http://www.
 
 Previously this project shipped without a working theme included. I figured that with all the great starter themes out there (for instance, [_s](https://github.com/Automattic/_s), [Roots](https://github.com/roots/roots), and [Bones](https://github.com/eddiemachado/bones)) it wouldn't be hard to drop one in and start theming. I don't personally use any of these so I was a little surprised to discover how tricky this can be. Starter themes, despite their "bare bones" reputation, are often bulky and opinionated. Some even ship with their own build processes already in place!
 
-It seems there is a need for what I'd call a *minimum viable theme*: a truly bare bones WordPress starter theme featuring only the essentials to get up and running, something that you can assess at a glance. For the purposes of this project I have created such a theme, tentatively named `voidx`. It isn't pretty but it works well enough to show off some of the possibilities of Gulp, Bower, and Sass. Feel free to play with or discard it as you wish. All files under `src` can be replaced by your own files.
+It seems there is a need for what I'd call a *minimum viable theme*: a truly bare bones WordPress starter theme featuring only the essentials to get up and running, something that you can assess at a glance. For the purposes of this project I have created such a theme, tentatively named `voidx`. It isn't pretty and isn't up to [WordPress standards](https://wordpress.org/plugins/theme-check/) but it works well enough to show off some of the possibilities of Gulp, Bower, and Sass. Feel free to play with or discard it as you wish. All files under `src` can be replaced by your own files, you just have to be sure to wire things up properly in the `gulpconfig.js` file if you swap in your own stuff.
 
 There are two components worth a closer look, however:
 
@@ -131,7 +131,6 @@ That's all there is to it. Now this script can be switched on or off in two conf
 * [Reduce unnecessary wrapper plugins](https://github.com/sogko/gulp-recipes/tree/master/unnecessary-wrapper-gulp-plugins).
 * RTL support with [gulp-rtlcss](https://github.com/jjlharrison/gulp-rtlcss)?
 * Explore using Gulp for I18n (a quick scan revealed nothing obviously useful).
-* Remember to update filenames when updating to HTML5 History API 4.2 (next release).
 
 Feature requests and bug reports welcome; [open an issue](https://github.com/synapticism/wordpress-gulp-bower-sass/issues)! Please note that I intend to reign in scope creep on this project :)
 
