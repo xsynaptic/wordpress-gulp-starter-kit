@@ -22,6 +22,9 @@ function voidx_setup() {
   // HTML5 support; mainly here to get rid of some nasty default styling that WordPress used to inject
   add_theme_support( 'html5', array( 'search-form', 'gallery' ) );
 
+  // Automatic feed links
+  add_theme_support( 'automatic-feed-links' );
+
   // $content_width limits the size of the largest image size available via the media uploader
   // It should be set once and left alone apart from that; don't do anything fancy with it; it is part of WordPress core
   global $content_width;

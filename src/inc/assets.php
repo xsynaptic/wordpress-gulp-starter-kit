@@ -10,7 +10,7 @@ if ( !function_exists( 'voidx_enqueue_scripts' ) ) : function voidx_enqueue_scri
   $script_vars = array();           // An empty array that can be filled with variables to send to front-end scripts
   $script_handle = 'voidx';         // A generic script handle
   $suffix = '.min';                 // The suffix for minified scripts
-  $ns = 'wp';                       // Namespace
+  $ns = 'wp';                       // Namespace for scripts
 
   // Load original scripts when debug mode is on
   if ( WP_DEBUG === true )
@@ -68,7 +68,7 @@ add_action( 'wp_enqueue_scripts', 'voidx_enqueue_scripts' );
 // Provision the front-end with the appropriate script variables
 function voidx_update_script_vars( $script_vars = array() ) {
 
-  // Non-destructively merge script variables if a particular condition is met
+  // Non-destructively merge script variables if a particular condition is met (e.g. `is_archive()` or whatever)
   if ( 1 == 1 ) {
     $script_vars = array_merge( $script_vars, array(
       'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
