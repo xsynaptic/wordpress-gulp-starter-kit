@@ -144,6 +144,8 @@ That's all there is to it. Now this script can be switched on or off in two conf
 * [Reduce unnecessary wrapper plugins](https://github.com/sogko/gulp-recipes/tree/master/unnecessary-wrapper-gulp-plugins).
 * RTL support with [gulp-rtlcss](https://github.com/jjlharrison/gulp-rtlcss)?
 * Explore using Gulp for I18n (a quick scan revealed nothing obviously useful).
+* Add an example using Bower.
+* Browserify integration.
 
 Feature requests and bug reports welcome; [open an issue](https://github.com/synapticism/wordpress-gulp-starter-kit/issues)! Please note that I intend to reign in scope creep on this project :)
 
