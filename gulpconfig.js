@@ -95,12 +95,12 @@ module.exports = {
   , compiler: 'libsass' // Choose a Sass compiler: 'libsass' or 'ruby-sass'
   , autoprefixer: { browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'] }
   , minify: { keepSpecialComments: 1, roundingPrecision: 3 }
-  , rubySass: { // Requires the Ruby implementation of Sass; run `gem install sass` if you use this; Compass is not included by default
+  , rubySass: { // Requires the Ruby implementation of Sass; run `gem install sass` if you use this; Compass is *not* included by default
       loadPath: ['./src/scss', bower] // Adds the `bower_components` directory to the load path so you can @import directly
     , precision: 6
     , sourcemap: true
   }
-  , libsass: { // Requires the libsass implementation of Sass
+  , libsass: { // Requires the libsass implementation of Sass (included in this package)
       includePaths: ['./src/scss', bower] // Adds the `bower_components` directory to the load path so you can @import directly
     , precision: 6
     , onError: function(err) {
@@ -132,7 +132,7 @@ module.exports = {
   watch: { // What to watch before triggering each specified task
     src: {
       styles:       src+'scss/**/*.scss'
-    , scripts:      src+'js/**/*.js'
+    , scripts:      src+'js/**/*.js' // You might also want to watch certain dependency trees but that's up to you
     , images:       src+'**/*(*.png|*.jpg|*.jpeg|*.gif)'
     , theme:        src+'**/*.php'
     , livereload:   build+'**/*'

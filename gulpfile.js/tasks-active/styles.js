@@ -18,13 +18,13 @@ gulp.task('styles-ruby-sass', function() {
   .pipe(gulp.dest(config.build.dest)); // Drops the unminified CSS file into the `build` folder
 });
 
-// Build stylesheets from source Sass files, autoprefix, and make a minified copy (for debugging) with libsass
+// Build stylesheets from source Sass files, autoprefix, and write source maps (for debugging) with libsass
 gulp.task('styles-libsass', function() {
   return gulp.src(config.build.src)
   .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass(config.libsass))
     .pipe(plugins.postcss([autoprefixer(config.autoprefixer)]))
-  .pipe(plugins.sourcemaps.write()) // Write internal sourcemap
+  .pipe(plugins.sourcemaps.write())
   .pipe(gulp.dest(config.build.dest)); // Drops the unminified CSS file into the `build` folder
 });
 
