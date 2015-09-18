@@ -7,13 +7,13 @@ var gulp        = require('gulp')
 ;
 
 // Totally wipe the contents of the `dist` folder to prepare for a clean build; additionally trigger Bower-related tasks to ensure we have the latest source files
-gulp.task('utils-wipe', ['bower'], function(cb) {
-  del(config.wipe, cb)
+gulp.task('utils-wipe', ['bower'], function() {
+  return del(config.wipe);
 });
 
 // Clean out junk files after build
-gulp.task('utils-clean', ['build', 'utils-wipe'], function(cb) {
-  del(config.clean, cb)
+gulp.task('utils-clean', ['build', 'utils-wipe'], function() {
+  return del(config.clean);
 });
 
 // Copy files from the `build` folder to `dist/[project]`

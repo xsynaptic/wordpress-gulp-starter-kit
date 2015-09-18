@@ -1,6 +1,6 @@
 {
-  "name": "wordpress-gulp-bower-sass",
-  "homepage": "https://github.com/synapticism/wordpress-gulp-bower-sass",
+  "name": "wordpress-gulp-starter-kit",
+  "homepage": "https://github.com/synapticism/wordpress-gulp-starter-kit",
   "authors": [
     {
       "name": "Alexander Synaptic",
@@ -11,6 +11,7 @@
   "keywords": [
     "wordpress",
     "wordpress-theme",
+    "starter-kit",
     "gulp",
     "bower",
     "sass",
@@ -30,9 +31,6 @@
   "devDependencies": {
     "meyer-reset": "*",
     "normalize.css": "^3.0.3",
-    "scut": "^1.2.1",
-    "html5-history-api": "^4.2.2",
-    "spin.js": "^2.3.2",
-    "wp-ajax-page-loader": "^0.1.3"
+    "scut": "^1.2.1"
   }
 }
