@@ -16,7 +16,7 @@ Most of these steps are optional if you're already up and running with most of t
 * Install Gulp `npm install gulp -g`.
 * Optional:
     * Install [Bower](http://bower.io/): `npm install bower -g`.
-    * Install Sass: `gem install sass` (requires Ruby; note that the `libsass` compiler is switched on by default and requires no further installation steps).
+    * Install Ruby Sass: `gem install sass`. This is only necessary if you decide not to use the [libsass](https://github.com/sass/libsass) compiler (which is the default).
     * Install [Composer](https://getcomposer.org/doc/00-intro.md) (a PHP package manager).
 * Download or clone this repo and install all dependencies by running `npm install` (which will automatically trigger `bower install`). This will fetch all dependencies listed in both `package.json` (which includes front-end JavaScript packages and back-end tools like Gulp plugins and Browsersync) and `bower.json` (which includes front-end dependencies e.g. jQuery plugins, Sass frameworks, icon libraries, and so on).
 * Edit `gulpconfig.js` and, *at the very least*, change the `project` variable to match the name of your theme. If you like the way this workflow is setup you shouldn't need to edit any of the files under `gulpfile.js/tasks-active` just yet.
@@ -66,30 +66,31 @@ Configuration is handled by a single file: `gulpconfig.js`. If you leave the dir
 
 
 
-## WORKING WITH BOWER
+## DEPENDENCY MANAGEMENT WITH NPM
 
-A few handy tips from the [Bower documentation](https://bower.io):
+[npm](https://www.npmjs.com/) is great for working with JavaScript-based packages of all kinds, front-end or back-end. Previously this starter kit emphasized the use of Bower to retrieve and manage front-end dependencies but nowadays my personal preference is to use npm, mostly because it's way easier to update and manage dependencies. Some basic usage tips:
 
-* Find new front-end dependencies with `bower search [package]`.
+* Search for packages with `npm search [package]` or browse [npmjs.org](http://npmjs.org/).
+* Install new packages with: `npm install [package] --save-dev`.
+* Use [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) to check for updates.
+* A simple rule-of-thumb: if it's mostly JavaScript based and you can find it there just use npm.
+
+
+
+## DEPENDENCY MANAGEMENT WITH BOWER
+
+Bower is great A few handy tips from the [Bower documentation](https://bower.io):
+
+* Search for packages with `bower search [package]` or browse the [Bower](http://bower.io/search/) web interface.
 * Install new front-end dependencies with: `bower install [package] --save-dev`.
 * Remove packages by deleting a line from `bower.json` and then run `bower prune`.
 * Clean the cache with `bower cache clean` (occasionally needed when things start getting weird).
 
 
 
-## WORKING WITH NPM
-
-[npm](https://www.npmjs.com/) is great for working with JavaScript-based packages of all kinds (front-end or back-end). Previously this starter kit emphasized the use of Bower to retrieve and manage front-end dependencies but nowadays my personal preference is to use npm, mostly because it's way easier to update dependencies than Bower.
-
-* Find new front-end dependencies with `bower search [package]`.
-* Install new front-end dependencies with: `bower install [package] --save-dev`.
-* A simple rule-of-thumb: if it's mostly JavaScript based and you can find it there just use npm.
-
-
-
 ## WORKING WITH SASS
 
-* This package now supports either [gulp-ruby-sass](https://github.com/sindresorhus/gulp-ruby-sass/) (which requires [the original Ruby implementation of Sass](https://github.com/sass/sass)) or [gulp-sass](https://www.npmjs.org/package/gulp-sass) (based on the newer, experimental, and faster [libsass](https://github.com/sass/libsass), now active by default). Switch `styles.compiler` as needed! For reference: [Sass compatibility table](https://sass-compatibility.github.io/).
+* This package now supports either [gulp-ruby-sass](https://github.com/sindresorhus/gulp-ruby-sass/) (which requires [the original Ruby implementation of Sass](https://github.com/sass/sass)) or [gulp-sass](https://www.npmjs.org/package/gulp-sass) (based on the newer, experimental, and faster [libsass](https://github.com/sass/libsass), now active by default). Switch `styles.compiler` in the configuration file as needed! For reference: [Sass compatibility table](https://sass-compatibility.github.io/).
 * [Sass](http://sass-lang.com/) files can be found in `/src/scss`. Gulp will not process Sass partials beginning with `_`; these need to be explicitly imported (see `style.scss` for an example). On the other hand, if you want to output any other CSS files just drop the underscore *e.g.* `editor-style.scss`.
 * Bower components are in the path by default so you can `@import` Sass files directly, as seen in `_loader.scss` and `_reset.scss`.
 * The `build` folder is provisioned with regular versions of all stylesheets but `dist` only contains minified versions for production.
@@ -144,8 +145,8 @@ That's all there is to it. Now this script can be switched on or off in two conf
 * [Reduce unnecessary wrapper plugins](https://github.com/sogko/gulp-recipes/tree/master/unnecessary-wrapper-gulp-plugins).
 * RTL support with [gulp-rtlcss](https://github.com/jjlharrison/gulp-rtlcss)?
 * Explore using Gulp for I18n (a quick scan revealed nothing obviously useful).
-* Add an example using Bower.
 * Browserify integration.
+* More good ideas from [Gulp recipes](https://github.com/gulpjs/gulp/tree/master/docs/recipes).
 
 Feature requests and bug reports welcome; [open an issue](https://github.com/synapticism/wordpress-gulp-starter-kit/issues)! Please note that I intend to reign in scope creep on this project :)
 
