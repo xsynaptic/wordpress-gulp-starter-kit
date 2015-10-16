@@ -138,6 +138,16 @@ That's all there is to it. Now this script can be switched on or off in two conf
 
 
 
+## TROUBLESHOOTING
+
+Things can and will go wrong when working with new tools but there are a few simple things you can do to avoid the worst of it:
+
+* Make sure all your base software is up to date, particularly npm, node, Bower, etc.
+* If you're getting weird errors you can't figure out try deleting `node_modules` and running `npm install`.
+* You might also have some luck cleaning the cache for both npm and Bower, both of which respond to the `clean cache` command.
+
+
+
 ## TO DO
 
 * Yeoman generator ([open issue](https://github.com/synapticism/wordpress-gulp-starter-kit/issues/1); [some help here](http://yeoman.io/authoring/) would be awesome since I don't personally use Yeoman).
