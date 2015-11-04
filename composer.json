@@ -1,5 +1,5 @@
 {
-  "name": "synapticism/wordpress-gulp-bower-sass",
+  "name": "synapticism/wordpress-gulp-starter-kit",
   "description": "A WordPress/Gulp/Bower/Sass starter kit",
   "keywords": [
     "wordpress",
@@ -13,7 +13,7 @@
     "browsersync",
     "livereload"
   ],
-  "homepage": "https://github.com/synapticism/wordpress-gulp-bower-sass",
+  "homepage": "https://github.com/synapticism/wordpress-gulp-starter-kit",
   "license": "GPL-3.0",
   "authors": [
     {
