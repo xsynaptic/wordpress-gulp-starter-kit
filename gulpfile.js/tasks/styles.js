@@ -5,16 +5,15 @@ var gulp          = require('gulp')
   , plugins       = require('gulp-load-plugins')({ camelize: true })
   , config        = require('../../gulpconfig').styles
   , autoprefixer  = require('autoprefixer')
+  , processors    = [autoprefixer(config.autoprefixer)] // Add additional PostCSS plugins to this array as needed
 ;
 
 // Build stylesheets from source Sass files, autoprefix, and write source maps (for debugging) with rubySass
-gulp.task('styles-ruby-sass', function() {
+gulp.task('styles-rubysass', function() {
   return plugins.rubySass(config.build.src, config.rubySass)
   .on('error', gutil.log) // Log errors instead of killing the process
-  .pipe(plugins.postcss([
-    autoprefixer(config.autoprefixer)
-  ]))
-  .pipe(plugins.sourcemaps.write())
+  .pipe(plugins.postcss(processors))
+  .pipe(plugins.sourcemaps.write('./')) // No need to init; this is set in the configuration
   .pipe(gulp.dest(config.build.dest)); // Drops the unminified CSS file into the `build` folder
 });
 
@@ -22,18 +21,16 @@ gulp.task('styles-ruby-sass', function() {
 gulp.task('styles-libsass', function() {
   return gulp.src(config.build.src)
   .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.sass(config.libsass))
-    .pipe(plugins.postcss([autoprefixer(config.autoprefixer)]))
-  .pipe(plugins.sourcemaps.write())
+  .pipe(plugins.sass(config.libsass))
+  .pipe(plugins.postcss(processors))
+  .pipe(plugins.sourcemaps.write('./')) // Writes an external sourcemap
   .pipe(gulp.dest(config.build.dest)); // Drops the unminified CSS file into the `build` folder
 });
 
 // Copy stylesheets from the `build` folder to `dist` and minify them along the way
 gulp.task('styles-dist', ['utils-dist'], function() {
   return gulp.src(config.dist.src)
-  .pipe(plugins.sourcemaps.init())
   .pipe(plugins.minifyCss(config.minify))
-  .pipe(plugins.sourcemaps.write('./')) // Writes an external sourcemap
   .pipe(gulp.dest(config.dist.dest));
 });
 

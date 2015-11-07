@@ -93,7 +93,7 @@ module.exports = {
       src: dist+'**/*.css'
     , dest: dist
     }
-  , compiler: 'libsass' // Choose a Sass compiler: 'libsass' or 'ruby-sass'
+  , compiler: 'libsass' // Choose a Sass compiler: 'libsass' or 'rubysass'
   , autoprefixer: { browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'] } // This tool is magic and you should use it in all your projects :)
   , minify: { keepSpecialComments: 1, roundingPrecision: 4 } // Keep special comments preserves the bits we need for WordPress to recognize the theme's stylesheet
   , rubySass: { // Requires the Ruby implementation of Sass; run `gem install sass` if you use this; Compass is *not* included by default
@@ -125,7 +125,7 @@ module.exports = {
     clean: [build+'**/.DS_Store'] // A glob pattern matching junk files to clean out of `build`; feel free to add to this array
   , wipe: [dist] // Clean this out before creating a new distribution copy
   , dist: {
-      src: build+'**/*'
+      src: [build+'**/*', '!'+build+'**/*.map']
     , dest: dist
     }
   },
@@ -134,7 +134,7 @@ module.exports = {
     src: {
       styles:       src+'scss/**/*.scss'
     , scripts:      src+'js/**/*.js' // You might also want to watch certain dependency trees but that's up to you
-    , images:       src+'**/*(*.png|*.jpg|*.jpeg|*.gif)'
+    , images:       src+'**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)'
     , theme:        src+'**/*.php'
     , livereload:   build+'**/*'
     }
