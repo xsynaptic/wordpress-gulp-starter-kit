@@ -97,7 +97,7 @@ Configuration is handled by a single file: `gulpconfig.js`. If you leave the dir
 
 A few handy tips from the [Bower documentation](https://bower.io):
 
-* Find new packages with `bower search [package]`.
+* Search for packages with `bower search [package]` or browse the [Bower](http://bower.io/search/) web interface.
 * Install new packages with: `bower install [package] --save-dev`.
 * Remove packages by deleting a line from `bower.json` and then run `bower prune`.
 * Clean the cache with `bower cache clean` (occasionally needed when things start getting weird).
@@ -106,7 +106,7 @@ A few handy tips from the [Bower documentation](https://bower.io):
 
 ## WORKING WITH SASS
 
-* This package now supports either [gulp-ruby-sass](https://github.com/sindresorhus/gulp-ruby-sass/) (which requires [the original Ruby implementation of Sass](https://github.com/sass/sass)) or [gulp-sass](https://www.npmjs.org/package/gulp-sass) (based on the newer, experimental, and faster [libsass](https://github.com/sass/libsass), now active by default). Switch `styles.compiler` as needed! For reference: [Sass compatibility table](https://sass-compatibility.github.io/).
+* This package now supports either [gulp-ruby-sass](https://github.com/sindresorhus/gulp-ruby-sass/) (which requires [the original Ruby implementation of Sass](https://github.com/sass/sass)) or [gulp-sass](https://www.npmjs.org/package/gulp-sass) (based on the newer, experimental, and faster [libsass](https://github.com/sass/libsass), now active by default). Switch `styles.compiler` in the configuration file as needed! For reference: [Sass compatibility table](https://sass-compatibility.github.io/).
 * [Sass](http://sass-lang.com/) files can be found in `/src/scss`. Gulp will not process Sass partials beginning with `_`; these need to be explicitly imported (see `style.scss` for an example). On the other hand, if you want to output any other CSS files just drop the underscore *e.g.* `editor-style.scss`.
 * Bower components are in the path by default so you can `@import` Sass files directly, as seen in `_loader.scss` and `_reset.scss`.
 * The `build` folder is provisioned with regular versions of all stylesheets but `dist` only contains minified versions for production.
@@ -154,6 +154,16 @@ That's all there is to it. Now this script can be switched on or off in two conf
 
 
 
+## TROUBLESHOOTING
+
+Things can and will go wrong when working with new tools but there are a few simple things you can do to avoid the worst of it:
+
+* Make sure all your base software is up to date, particularly npm, node, Bower, etc.
+* If you're getting weird errors you can't figure out try deleting `node_modules` and running `npm install`.
+* You might also have some luck cleaning the cache for both npm and Bower, both of which respond to the `clean cache` command.
+
+
+
 ## TO DO
 
 * Yeoman generator ([open issue](https://github.com/synapticism/wordpress-gulp-starter-kit/issues/1); [some help here](http://yeoman.io/authoring/) would be awesome since I don't personally use Yeoman).
@@ -163,6 +173,7 @@ That's all there is to it. Now this script can be switched on or off in two conf
 * Explore using Gulp for I18n (a quick scan revealed nothing obviously useful).
 * Add an example using Bower.
 * Browserify integration? The existing bundles/chunks system is very DIY and non-standard. Feedback welcome.
+* More good ideas from [Gulp recipes](https://github.com/gulpjs/gulp/tree/master/docs/recipes).
 
 Feature requests and bug reports welcome; [open an issue](https://github.com/synapticism/wordpress-gulp-starter-kit/issues)! Please note that I intend to reign in scope creep on this project :)
 
