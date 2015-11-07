@@ -7,7 +7,8 @@
 // Master media query mixin; only for use with screens, of course; should work with raw integers or pixel values; adapted from Kipple: https://github.com/synapticism/kipple
 @mixin media($min-query: null, $max-query: null) {
   @if $min-query == null and $max-query == null {
-    @warn "Mixin k-media() received two null values; no output."
+    @warn "Mixin k-media() received two null values; no output.";
+    @content; // Pass content anyway, but it won't be wrapped in a media query
   }
   @else if $max-query == null {
     @media screen and (min-width: $min-query+0px) { @content; }
@@ -47,7 +48,7 @@
 
 // Master config function
 @function config($map, $key) {
-  @return unquote(map-get($map, $key));
+  @return map-get($map, $key);
 }
 
 // A simple function to retrieve a color from the array; adapted from http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/

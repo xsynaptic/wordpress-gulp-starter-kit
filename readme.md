@@ -2,26 +2,43 @@
 
 Designing WordPress themes the old-fashioned way is time-consuming and error-prone. Automating the build process allows us to integrate best practices into our workflow while saving time. This project is a *starter kit* for developing highly optimized WordPress themes with [Gulp](http://gulpjs.com/), [npm](https://www.npmjs.com/), [Bower](http://bower.io/), and [Sass](http://sass-lang.com/), among other tools. This is *not* meant to be a starter theme or framework (although I have included a *minimum viable theme* to demonstrate some of the possibilities). It is, instead, a kind of *project scaffolding* and *example workflow* for modern and efficient WordPress theme development.
 
-The latest version of this starter kit features a modular Gulp file design inspired by Dan Tello's excellent [gulp-starter](https://github.com/greypants/gulp-starter). Configuration is isolated from the tasks themselves to make it easier to change paths and modify settings. It is slightly more complicated than [the approach originally described on my blog](http://synapticism.com/dev/wordpress-theme-development-with-gulp-bower-and-sass/) but also far more powerful.
+The latest version of this starter kit features a modular Gulp file design inspired by Dan Tello's excellent [gulp-starter](https://github.com/greypants/gulp-starter). Configuration is isolated from the tasks themselves to make it easier to change paths and modify settings. This approach is slightly more complicated than what I originally [outlined on my blog](http://synapticism.com/dev/wordpress-theme-development-with-gulp-bower-and-sass/) but also far more powerful. Live local development is now facilitated by your choice of [BrowserSync](http://www.browsersync.io/) or [LiveReload](http://livereload.com/) (the default choice).
 
-Local development is now facilitated by your choice of [BrowserSync](http://www.browsersync.io/) or [LiveReload](http://livereload.com/) (the default choice).
+Why use this project instead of any of the alternatives? A few advantages:
+
+* It doesn't try and do too much.
+* You should be able to easily drop your own theme into the `src` folder and start hacking without much additional setup.
+* Documentation and comments in the code assume a novice level of understanding.
+* Builds on existing WordPress and Gulp best practices without doing anything too crazy.
+* Will save you a ton of time and help you make better, more readily optimized themes once you learn how it all works.
 
 
 
 ## INSTALLATION
 
-Most of these steps are optional if you're already up and running with most of the usual node ecosystem tools.
+If you're already up and running with most of the usual Node ecosystem tools this starter kit won't require much additional effort.
 
-* [Install npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
-* Install Gulp `npm install gulp -g`.
-* Optional:
-    * Install [Bower](http://bower.io/): `npm install bower -g`.
-    * Install Ruby Sass: `gem install sass`. This is only necessary if you decide not to use the [libsass](https://github.com/sass/libsass) compiler (which is the default).
-    * Install [Composer](https://getcomposer.org/doc/00-intro.md) (a PHP package manager).
-* Download or clone this repo and install all dependencies by running `npm install` (which will automatically trigger `bower install`). This will fetch all dependencies listed in both `package.json` (which includes front-end JavaScript packages and back-end tools like Gulp plugins and Browsersync) and `bower.json` (which includes front-end dependencies e.g. jQuery plugins, Sass frameworks, icon libraries, and so on).
-* Edit `gulpconfig.js` and, *at the very least*, change the `project` variable to match the name of your theme. If you like the way this workflow is setup you shouldn't need to edit any of the files under `gulpfile.js/tasks-active` just yet.
-* [BrowserSync](http://www.browsersync.io/) setup: assuming you have a local development environment setup all you should need to do is enter the URL into the `proxy` setting in `gulpconfig.js`. (Why use BrowserSync? It's fast, awesome, and allows for simultaneous responsive development across multiple devices.)
-* [LiveReload](http://livereload.com/) setup: install a browser extension for [Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) or Firefox. (Why use LiveReload? It does the job without complications.)
+### REQUIRED
+
+* Install [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
+* Install [Gulp](http://gulpjs.com/): `npm install gulp -g`.
+* Download or clone this repo: `git clone https://github.com/synapticism/wordpress-gulp-starter-kit.git`.
+
+### OPTIONAL
+
+* Install [Bower](http://bower.io/): `npm install bower -g` (helps manage front-end dependencies, particularly CSS libraries and such; see below for more info).
+* Install [Composer](https://getcomposer.org/doc/00-intro.md) (a PHP package manager, not really necessary).
+* Install [Sass](http://sass-lang.com/) (only if the built-in, default `libsass` compiler isn't good enough for your needs): `gem install sass` (requires Ruby).
+
+
+
+## SETUP
+
+* Edit `gulpconfig.js` and, *at the very least*, change the `project` variable to match the name of your theme. If you like the way this workflow is setup you shouldn't need to edit any of the files under `gulpfile.js/tasks` just yet.
+* Install all dependencies by running `npm install`. This will fetch all dependencies listed in `package.json` (which includes front-end JavaScript packages and back-end tools like Gulp plugins and [BrowserSync](http://www.browsersync.io/)).
+* The previous command will also invoke `bower install` (assuming you have Bower installed) and will fetch all dependencies listed in `bower.json` (which includes front-end dependencies e.g. jQuery plugins, Sass frameworks, icon libraries, and so on).
+* [BrowserSync](http://www.browsersync.io/) setup: assuming you have a local development environment setup all you should need to do is enter the URL into the `proxy` setting in `gulpconfig.js`. Why use BrowserSync? It's fast, awesome, and allows for simultaneous responsive development across multiple devices.
+* [LiveReload](http://livereload.com/) setup: install a browser extension for [Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) or Firefox. Why use LiveReload? It does the job without complications or additional setup after the extension is installed.
 * Run `gulp` and start hacking!
 
 
@@ -37,6 +54,8 @@ There are two components worth a closer look, however:
 * The script variable and enqueuing functions in `src/inc/assets.php`; these are tightly coupled with the output of the build process.
 * The theme configuration pattern described in `functions.php` and `functions-config-defaults.php`.
 
+Whether you use anything from this built-in theme is entirely up to you. If you prefer to start working with your own theme just drop it in. You may need to go into `gulpconfig.js` and modify paths and glob matching patterns but this is designed to be fairly easy and straight-forward with lots of comments to point you in the right direction.
+
 
 
 ## ORGANIZATION
@@ -48,8 +67,6 @@ This starter kit uses `src`, `build`, and `dist` folders to organize theme devel
 * `dist`: short for distribution, this will be the final, polished copy of your theme for production. You will need to manually run `gulp dist` to create a new distribution. You can also symlink this directory for a final round of testing; just keep in mind that your theme will now be in `dist/[project]`, where `[project]` is the setting at the top of the Gulp configuration. This project folder is what you will want to deploy to production. (No more weird junk in your themes. Hooray!)
 
 Note: both the `build` and `dist` directories are disposable and can be regenerated from the contents of `src`. You aren't likely to want to edit files in this folders but you may want to open them up to diagnose issues with the build process itself.
-
-There is also a `gulp` folder containing the configuration file and two task directories, active and inactive. All files in the `tasks-active` directory will be required at runtime and available for use.
 
 
 
@@ -66,23 +83,22 @@ Configuration is handled by a single file: `gulpconfig.js`. If you leave the dir
 
 
 
-## DEPENDENCY MANAGEMENT WITH NPM
+## WORKING WITH NPM
 
-[npm](https://www.npmjs.com/) is great for working with JavaScript-based packages of all kinds, front-end or back-end. Previously this starter kit emphasized the use of Bower to retrieve and manage front-end dependencies but nowadays my personal preference is to use npm, mostly because it's way easier to update and manage dependencies. Some basic usage tips:
+[npm](https://www.npmjs.com/) is great for working with JavaScript-based packages of all kinds (front-end or back-end). Previously this starter kit emphasized the use of Bower to retrieve and manage front-end dependencies but nowadays my personal preference is to use npm, mostly because it's way easier to update dependencies than Bower using tools like [npm-check-updates](https://www.npmjs.com/package/npm-check-updates).
 
-* Search for packages with `npm search [package]` or browse [npmjs.org](http://npmjs.org/).
+* Find new packages with `npm search [package]`.
 * Install new packages with: `npm install [package] --save-dev`.
-* Use [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) to check for updates.
-* A simple rule-of-thumb: if it's mostly JavaScript based and you can find it there just use npm.
+* A general rule-of-thumb: if it's mostly JavaScript-based and you can find it there just use npm.
 
 
 
-## DEPENDENCY MANAGEMENT WITH BOWER
+## WORKING WITH BOWER
 
-Bower is great A few handy tips from the [Bower documentation](https://bower.io):
+A few handy tips from the [Bower documentation](https://bower.io):
 
 * Search for packages with `bower search [package]` or browse the [Bower](http://bower.io/search/) web interface.
-* Install new front-end dependencies with: `bower install [package] --save-dev`.
+* Install new packages with: `bower install [package] --save-dev`.
 * Remove packages by deleting a line from `bower.json` and then run `bower prune`.
 * Clean the cache with `bower cache clean` (occasionally needed when things start getting weird).
 
@@ -155,7 +171,8 @@ Things can and will go wrong when working with new tools but there are a few sim
 * [Reduce unnecessary wrapper plugins](https://github.com/sogko/gulp-recipes/tree/master/unnecessary-wrapper-gulp-plugins).
 * RTL support with [gulp-rtlcss](https://github.com/jjlharrison/gulp-rtlcss)?
 * Explore using Gulp for I18n (a quick scan revealed nothing obviously useful).
-* Browserify integration.
+* Add an example using Bower.
+* Browserify integration? The existing bundles/chunks system is very DIY and non-standard. Feedback welcome.
 * More good ideas from [Gulp recipes](https://github.com/gulpjs/gulp/tree/master/docs/recipes).
 
 Feature requests and bug reports welcome; [open an issue](https://github.com/synapticism/wordpress-gulp-starter-kit/issues)! Please note that I intend to reign in scope creep on this project :)
