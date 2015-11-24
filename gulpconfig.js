@@ -14,14 +14,6 @@ var project     = 'voidx'                 // The directory name for your theme; 
 // Project settings
 module.exports = {
 
-  bower: {
-    normalize: { // Copies `normalize.css` from `bower_components` to `src/scss` and renames it to allow for it to imported as a Sass file
-      src: bower+'normalize.css/normalize.css'
-    , dest: src+'scss'
-    , rename: '_normalize.scss'
-    }
-  },
-
   browsersync: {
     files: [build+'/**', '!'+build+'/**.map'] // Exclude map files
   , notify: false // In-line notifications (the blocks of text saying whether you are connected to the BrowserSync server or not)
@@ -56,14 +48,17 @@ module.exports = {
   scripts: {
     bundles: { // Bundles are defined by a name and an array of chunks (below) to concatenate; warning: this method offers no dependency management!
       core: ['core']
-    , pg8: ['pg8', 'core']
+    , pageloader: ['pageloader', 'core']
     }
   , chunks: { // Chunks are arrays of paths or globs matching a set of source files; this way you can organize a bunch of scripts that go together into pieces that can then be bundled (above)
+      // The core chunk is loaded no matter what; put essential scripts that you want loaded by your theme in here
       core: [
         src+'js/responsive-menu.js'
       , src+'js/core.js'
       ]
-    , pg8: [
+      // The pageloader chunk provides an example of how you would add a user-configurable feature to your theme; you can delete this if you wish
+      // Have a look at the `src/inc/assets.php` to see how script bundles could be conditionally loaded by a theme
+    , pageloader: [
         modules+'html5-history-api/history.js' // The modules directory contains packages downloaded via npm
       , modules+'spin.js/spin.js'
       , modules+'spin.js/jquery.spin.js'
@@ -97,12 +92,12 @@ module.exports = {
   , autoprefixer: { browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'] } // This tool is magic and you should use it in all your projects :)
   , minify: { keepSpecialComments: 1, roundingPrecision: 4 } // Keep special comments preserves the bits we need for WordPress to recognize the theme's stylesheet
   , rubySass: { // Requires the Ruby implementation of Sass; run `gem install sass` if you use this; Compass is *not* included by default
-      loadPath: ['./src/scss', bower] // Adds the `bower_components` directory to the load path so you can @import directly
+      loadPath: ['./src/scss', bower, modules] // Adds Bower and npm directories to the load path so you can @import directly
     , precision: 6
     , sourcemap: true
   }
   , libsass: { // Requires the libsass implementation of Sass (included in this package)
-      includePaths: ['./src/scss', bower] // Adds the `bower_components` directory to the load path so you can @import directly
+      includePaths: ['./src/scss', bower, modules] // Adds Bower and npm directories to the load path so you can @import directly
     , precision: 6
     , onError: function(err) {
         return console.log(err);
@@ -127,6 +122,11 @@ module.exports = {
   , dist: {
       src: [build+'**/*', '!'+build+'**/*.map']
     , dest: dist
+    }
+  , normalize: { // Copies `normalize.css` from `node_modules` to `src/scss` and renames it to allow for it to imported as a Sass file
+      src: modules+'normalize.css/normalize.css'
+    , dest: src+'scss'
+    , rename: '_normalize.scss'
     }
   },
 

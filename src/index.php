@@ -2,7 +2,7 @@
   <div id="wrap-content" class="wrap-content">
     <div id="content" class="site-content">
       <section id="primary" class="content-area">
-        <main id="main" class="site-main" role="main">
+        <main id="main" class="site-main">
         <?php if ( have_posts() ) {
           while ( have_posts() ) : the_post(); ?>
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">

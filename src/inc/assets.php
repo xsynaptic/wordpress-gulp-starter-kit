@@ -1,10 +1,10 @@
 <?php // ==== ASSETS ==== //
 
 // Now that you have efficiently generated scripts and stylesheets for your theme, how should they be integrated?
-// This file walks you through the approach I use...
+// This file walks you through the approach I use but you are free to approach this any way you like
 
 // Enqueue front-end scripts and styles
-if ( !function_exists( 'voidx_enqueue_scripts' ) ) : function voidx_enqueue_scripts() {
+function voidx_enqueue_scripts() {
 
   $script_name = '';                // Empty by default, may be populated by conditionals below
   $script_vars = array();           // An empty array that can be filled with variables to send to front-end scripts
@@ -12,32 +12,34 @@ if ( !function_exists( 'voidx_enqueue_scripts' ) ) : function voidx_enqueue_scri
   $suffix = '.min';                 // The suffix for minified scripts
   $ns = 'wp';                       // Namespace for scripts
 
-  // Load original scripts when debug mode is on
+  // Load original scripts when debug mode is on; this allows for easier local development
   if ( WP_DEBUG === true )
     $suffix = '';
 
   // Figure out which script bundle to load based on various options set in `src/functions-config-defaults.php`
   // Note: bundles require less HTTP requests at the expense of addition caching hits when different scripts are requested
-  // You could also load one main bundle on every page with supplementary scripts as needed (e.g. for commenting)
+  // You could also load one main bundle on every page with supplementary scripts as needed (e.g. for commenting or a contact page)
 
-  // WP AJAX Page Loader (pg8); this requires a bit more setup as outlined in the documentation: https://github.com/synapticism/wp-ajax-page-loader
-  $script_vars_pg8 = '';
+  // An example integration using WP AJAX Page Loader; this script requires a bit more setup as outlined in the documentation: https://github.com/synapticism/wp-ajax-page-loader
+  $script_vars_page_loader = '';
+
+  // This conditional establishes whether the page loader bundle is loaded or not; you can turn this off completely from the theme configuration file if you wish (or just remove the code)
   if ( VOIDX_SCRIPTS_PAGELOAD && ( is_archive() || is_home() || is_search() ) ) {
-    $script_name .= '-pg8';
+    $script_name .= '-pageloader'; // This is used to generate the filename that the theme will serve to the user; it is additive to allow for multiple features that can be toggled in the theme configuration
 
     global $wp_query;
 
-    // What page are we on? And what is the page limit?
+    // This chunk of code provisions the script with some important information it needs: What page are we on? And what is the page limit?
     $max = $wp_query->max_num_pages;
     $paged = ( get_query_var( 'paged' ) > 1 ) ? get_query_var( 'paged' ) : 1;
 
-    // Prepare script variables; note that these are separate from the rest of the script variables
-    $script_vars_pg8 = array(
+    // Prepare script variables; note that these are separate from the rest of the script variables as this script requires everything in an object named `PG8Data`
+    $script_vars_page_loader = array(
       'startPage'   => $paged,
       'maxPages'    => $max,
       'nextLink'    => next_posts( $max, false )
     );
-  } // end PG8
+  } // WP AJAX Page Loader configuration ends
 
   // Default script name
   if ( empty( $script_name ) )
@@ -52,15 +54,15 @@ if ( !function_exists( 'voidx_enqueue_scripts' ) ) : function voidx_enqueue_scri
   if ( !empty( $script_vars ) )
     wp_localize_script( $script_handle, 'voidxVars', $script_vars );
 
-  // Script variables for WP AJAX Page Loader (these are separate from the main theme script variables due to the naming requirement)
-  if ( !empty( $script_vars_pg8 ) )
-    wp_localize_script( $script_handle, 'PG8Data', $script_vars_pg8 );
+  // Script variables for WP AJAX Page Loader (these are separate from the main theme script variables due to the naming requirement; the object must be `PG8Data`)
+  if ( !empty( $script_vars_page_loader ) )
+    wp_localize_script( $script_handle, 'PG8Data', $script_vars_page_loader );
 
   // Register and enqueue our main stylesheet with versioning based on last modified time
   wp_register_style( 'voidx-style', get_stylesheet_uri(), $dependencies = array(), filemtime( get_template_directory() . '/style.css' ) );
   wp_enqueue_style( 'voidx-style' );
 
-} endif;
+}
 add_action( 'wp_enqueue_scripts', 'voidx_enqueue_scripts' );
 
 

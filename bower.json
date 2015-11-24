@@ -27,10 +27,5 @@
     "tests",
     ".sass-cache",
     "build"
-  ],
-  "devDependencies": {
-    "meyer-reset": "*",
-    "normalize.css": "^3.0.3",
-    "scut": "^1.2.1"
-  }
+  ]
 }
