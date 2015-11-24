@@ -14,14 +14,6 @@ var project     = 'voidx'                 // The directory name for your theme; 
 // Project settings
 module.exports = {
 
-  bower: {
-    normalize: { // Copies `normalize.css` from `bower_components` to `src/scss` and renames it to allow for it to imported as a Sass file
-      src: bower+'normalize.css/normalize.css'
-    , dest: src+'scss'
-    , rename: '_normalize.scss'
-    }
-  },
-
   browsersync: {
     files: [build+'/**', '!'+build+'/**.map'] // Exclude map files
   , notify: false // In-line notifications (the blocks of text saying whether you are connected to the BrowserSync server or not)
@@ -130,6 +122,11 @@ module.exports = {
   , dist: {
       src: [build+'**/*', '!'+build+'**/*.map']
     , dest: dist
+    }
+  , normalize: { // Copies `normalize.css` from `node_modules` to `src/scss` and renames it to allow for it to imported as a Sass file
+      src: bower+'normalize.css/normalize.css'
+    , dest: src+'scss'
+    , rename: '_normalize.scss'
     }
   },
 
