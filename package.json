@@ -20,9 +20,6 @@
     "browsersync",
     "livereload"
   ],
-  "scripts": {
-    "postinstall": "bower install"
-  },
   "author": "Alexander Synaptic <alexander@synapticism.com>",
   "license": "GPL-3.0",
   "main": "gulpfile.js",
@@ -48,11 +45,13 @@
     "gulp-util": "^3.0.7",
     "html5-history-api": "^4.2.4",
     "merge-stream": "^1.0.0",
+    "normalize.css": "^3.0.3",
     "require-dir": "^0.3.0",
+    "scut": "^1.3.0",
     "spin.js": "^2.3.2",
     "wp-ajax-page-loader": "^0.2.0"
   },
-  "dependencies": {
-    "normalize.css": "^3.0.3"
+  "scripts": {
+    "postinstall": "gulp setup"
   }
 }

@@ -92,12 +92,12 @@ module.exports = {
   , autoprefixer: { browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'] } // This tool is magic and you should use it in all your projects :)
   , minify: { keepSpecialComments: 1, roundingPrecision: 4 } // Keep special comments preserves the bits we need for WordPress to recognize the theme's stylesheet
   , rubySass: { // Requires the Ruby implementation of Sass; run `gem install sass` if you use this; Compass is *not* included by default
-      loadPath: ['./src/scss', bower] // Adds the `bower_components` directory to the load path so you can @import directly
+      loadPath: ['./src/scss', bower, modules] // Adds Bower and npm directories to the load path so you can @import directly
     , precision: 6
     , sourcemap: true
   }
   , libsass: { // Requires the libsass implementation of Sass (included in this package)
-      includePaths: ['./src/scss', bower] // Adds the `bower_components` directory to the load path so you can @import directly
+      includePaths: ['./src/scss', bower, modules] // Adds Bower and npm directories to the load path so you can @import directly
     , precision: 6
     , onError: function(err) {
         return console.log(err);
@@ -124,7 +124,7 @@ module.exports = {
     , dest: dist
     }
   , normalize: { // Copies `normalize.css` from `node_modules` to `src/scss` and renames it to allow for it to imported as a Sass file
-      src: bower+'normalize.css/normalize.css'
+      src: modules+'normalize.css/normalize.css'
     , dest: src+'scss'
     , rename: '_normalize.scss'
     }

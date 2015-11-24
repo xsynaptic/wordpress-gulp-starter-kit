@@ -1,6 +1,6 @@
 # A WORDPRESS/GULP STARTER KIT
 
-Designing WordPress themes the old-fashioned way is time-consuming and error-prone. Automating the build process allows us to integrate best practices into our workflow while saving time. This project is a *starter kit* for developing highly optimized WordPress themes with [Gulp](http://gulpjs.com/), [npm](https://www.npmjs.com/), [Bower](http://bower.io/), and [Sass](http://sass-lang.com/), among other tools. This is *not* meant to be a starter theme or framework (although I have included a *minimum viable theme* to demonstrate some of the possibilities). It is, instead, a kind of *project scaffolding* and *example workflow* for modern and efficient WordPress theme development.
+Designing WordPress themes the old-fashioned way is time-consuming and error-prone. Automating the build process allows us to integrate best practices into our workflow while saving time. This project is a *starter kit* for developing highly optimized WordPress themes with [Gulp](http://gulpjs.com/), [npm](https://www.npmjs.com/), and [Sass](http://sass-lang.com/), among other tools. This is *not* meant to be a starter theme or framework (although I have included a *minimum viable theme* to demonstrate some of the possibilities). It is, instead, a kind of *project scaffolding* and *example workflow* for modern and efficient WordPress theme development.
 
 The latest version of this starter kit features a modular Gulp file design inspired by Dan Tello's excellent [gulp-starter](https://github.com/greypants/gulp-starter). Configuration is isolated from the tasks themselves to make it easier to change paths and modify settings. This approach is slightly more complicated than what I originally [outlined on my blog](http://synapticism.com/dev/wordpress-theme-development-with-gulp-bower-and-sass/) but also far more powerful. Live local development is now facilitated by your choice of [BrowserSync](http://www.browsersync.io/) or [LiveReload](http://livereload.com/) (the default choice).
 
@@ -36,7 +36,6 @@ If you're already up and running with most of the usual Node ecosystem tools thi
 
 * Edit `gulpconfig.js` and, *at the very least*, change the `project` variable to match the name of your theme. If you like the way this workflow is setup you shouldn't need to edit any of the files under `gulpfile.js/tasks` just yet.
 * Install all dependencies by running `npm install`. This will fetch all dependencies listed in `package.json` (which includes front-end JavaScript packages and back-end tools like Gulp plugins and [BrowserSync](http://www.browsersync.io/)).
-* The previous command will also invoke `bower install` (assuming you have Bower installed) and will fetch all dependencies listed in `bower.json` (which includes front-end dependencies e.g. jQuery plugins, Sass frameworks, icon libraries, and so on).
 * [BrowserSync](http://www.browsersync.io/) setup: assuming you have a local development environment setup all you should need to do is enter the URL into the `proxy` setting in `gulpconfig.js`. Why use BrowserSync? It's fast, awesome, and allows for simultaneous responsive development across multiple devices.
 * [LiveReload](http://livereload.com/) setup: install a browser extension for [Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) or Firefox. Why use LiveReload? It does the job without complications or additional setup after the extension is installed.
 * Run `gulp` and start hacking!
@@ -76,7 +75,7 @@ Note: both the `build` and `dist` directories are disposable and can be regenera
 
 To get started try running `gulp` from the command line. This fires `gulpfile.js/index.js` and should build a working copy of the included theme. The other command you will use from time to time is `gulp dist`, which builds a distribution copy.
 
-You might also find a need for `gulp setup` which runs one-off setup tasks (which is also triggered by `gulp dist`). In the default installation this setup task only copies `normalize.css` to `src/scss` so it can be imported like a native SCSS file.
+You might also find a need for `gulp setup` which runs one-off setup tasks (which is also triggered by `gulp dist`). In the default installation this setup task only copies `normalize.css` to `src/scss` so it can be imported like a native SCSS file. This task is also run after `npm install` completes.
 
 Configuration is handled by a single file: `gulpconfig.js`. If you leave the directory structure intact there won't be too much that needs changing here but I can think of two non-obvious components you might want to modify or at least look at:
 
@@ -110,7 +109,7 @@ A few handy tips from the [Bower documentation](https://bower.io):
 
 * This package now supports either [gulp-ruby-sass](https://github.com/sindresorhus/gulp-ruby-sass/) (which requires [the original Ruby implementation of Sass](https://github.com/sass/sass)) or [gulp-sass](https://www.npmjs.org/package/gulp-sass) (based on the newer, experimental, and faster [libsass](https://github.com/sass/libsass), now active by default). Switch `styles.compiler` in the configuration file as needed! For reference: [Sass compatibility table](https://sass-compatibility.github.io/).
 * [Sass](http://sass-lang.com/) files can be found in `/src/scss`. Gulp will not process Sass partials beginning with `_`; these need to be explicitly imported (see `style.scss` for an example). On the other hand, if you want to output any other CSS files just drop the underscore *e.g.* `editor-style.scss`.
-* Bower components are in the path by default so you can `@import` Sass files directly, as seen in `_loader.scss` and `_reset.scss`.
+* Packages installed with Bower or npm are in the path by default so you can `@import` Sass files directly, as seen in `style.scss`.
 * The `build` folder is provisioned with regular versions of all stylesheets but `dist` only contains minified versions for production.
 * This starter kit ships with [Normalize.css](https://necolas.github.io/normalize.css/) (imported into the `src/scss` directory using `gulp setup`; you might also like to explore the use of [normalize-scss](https://github.com/JohnAlbin/normalize-scss) for your project).
 * Compass is *not* included as [Autoprefixer](https://github.com/ai/autoprefixer), a [PostCSS](https://github.com/postcss/postcss) plugin, eliminates the need for vendor prefixing (which is what most Sass frameworks focus on these days). Instead I have included [Scut](https://davidtheclark.github.io/scut/), a minimalist library of useful Sass mixins and functions for the post-vendor prefixing era. This is easily removed if you're not interested in using it.
