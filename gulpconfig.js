@@ -53,7 +53,8 @@ module.exports = {
   , chunks: { // Chunks are arrays of paths or globs matching a set of source files; this way you can organize a bunch of scripts that go together into pieces that can then be bundled (above)
       // The core chunk is loaded no matter what; put essential scripts that you want loaded by your theme in here
       core: [
-        src+'js/responsive-menu.js'
+        modules+'timeago/jquery.timeago.js'
+      , src+'js/responsive-menu.js'
       , src+'js/core.js'
       ]
       // The pageloader chunk provides an example of how you would add a user-configurable feature to your theme; you can delete this if you wish
@@ -84,13 +85,9 @@ module.exports = {
       src: src+'scss/**/*.scss'
     , dest: build
     }
-  , dist: {
-      src: dist+'**/*.css'
-    , dest: dist
-    }
   , compiler: 'libsass' // Choose a Sass compiler: 'libsass' or 'rubysass'
   , autoprefixer: { browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'] } // This tool is magic and you should use it in all your projects :)
-  , minify: { keepSpecialComments: 1, roundingPrecision: 4 } // Keep special comments preserves the bits we need for WordPress to recognize the theme's stylesheet
+  , minify: { safe: true }
   , rubySass: { // Requires the Ruby implementation of Sass; run `gem install sass` if you use this; Compass is *not* included by default
       loadPath: ['./src/scss', bower, modules] // Adds Bower and npm directories to the load path so you can @import directly
     , precision: 6

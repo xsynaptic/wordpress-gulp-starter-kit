@@ -10,7 +10,7 @@ Why use this project instead of any of the alternatives? A few advantages:
 * You should be able to easily drop your own theme into the `src` folder and start hacking without much additional setup.
 * Documentation and comments in the code assume a novice level of understanding.
 * Builds on existing WordPress and Gulp best practices without doing anything too crazy.
-* Will save you a ton of time and help you make better, more readily optimized themes once you learn how it all works.
+* This kind of workflow will save you a ton of time and help you make better, more readily-optimized themes once you learn how it all works.
 
 
 
@@ -46,9 +46,9 @@ If you're already up and running with most of the usual Node ecosystem tools thi
 
 Previously this project shipped without a working theme included. I figured that with all the great starter themes out there (for instance, [_s](https://github.com/Automattic/_s), [Roots](https://github.com/roots/roots), and [Bones](https://github.com/eddiemachado/bones)) it wouldn't be hard to drop one in and start theming. I don't personally use any of these so I was a little surprised to discover how tricky this can be. Starter themes, despite their "bare bones" reputation, are often bulky and opinionated. Some even ship with their own build processes already in place!
 
-It seems there is a need for what I'd call a *minimum viable theme*: a truly bare bones WordPress starter theme featuring only the essentials to get up and running, something that you can assess at a glance. For the purposes of this project I have created such a theme, tentatively named `voidx`. It isn't pretty and isn't up to [WordPress standards](https://wordpress.org/plugins/theme-check/) but it works well enough to show off some of the power of this workflow. Feel free to play with or discard it as you wish. All files under `src` can be replaced by your own files, you just have to be sure to wire things up properly in the `gulpconfig.js` file if you swap in your own stuff.
+It seems there is a need for what I'd call a *minimum viable theme*: a truly bare bones WordPress starter theme featuring only the essentials to get up and running, something that you can assess at a glance. For the purposes of this project I have created such a theme, tentatively named `voidx`. It isn't pretty and isn't up to [WordPress standards](https://wordpress.org/plugins/theme-check/) but it works well enough to show off some of the power of this workflow. Feel free to play with or discard it as you wish. All files under `src` can be replaced by your own files, you just have to be sure to wire things up properly in the `gulpconfig.js` file if you swap in your own stuff. I've already integrated [timeago](http://timeago.yarp.com/), a simple script to transform timestamps into something more human-readable, but this is easily removed if you don't like it (which is sort of the point of having such scaffolding, so you can easily swap stuff in and out).
 
-There are two components worth a closer look, however:
+There are two components worth a closer look:
 
 * The script variable and enqueuing functions in `src/inc/assets.php`; these are tightly coupled with the output of the build process.
 * The theme configuration pattern described in `functions.php` and `functions-config-defaults.php`.
@@ -131,7 +131,7 @@ Like images, PHP (and language) files can go anywhere under `src` and will be co
 
 
 
-## A SAMPLE INTEGRATION
+## EXAMPLE INTEGRATION
 
 Let's say you run across a cool project like [Headroom.js](http://wicky.nillia.ms/headroom.js/) and decide you'd like to try it out. Here's how you would do that with the tools and workflow outlined in this repo:
 
@@ -142,7 +142,7 @@ Let's say you run across a cool project like [Headroom.js](http://wicky.nillia.m
     * Add the switch to `inc/assets.php`: `if ( VOIDX_SCRIPTS_HEADROOM ) : $script_name .= '-hr';`.
     * Add an option to `scss/_config.scss` to allow for the styling to be turned on or off: `$plugin-headroom: true;`.
     * Add the necessary styling to `scss/_plugins.scss` wrapped in a conditional check: `@if ($plugin-headroom) { // Style }`.
-    * Create an additional script at `src/js/headroom.js` to invoke the main script (code to follow).
+    * Create an additional script at `src/js/headroom.js` to invoke the main script:
 
 ```language-javascript
 // Invoke Headroom.js
