@@ -71,6 +71,15 @@
     @extend %spacer-below-2;
   }
 }
+.site-navigation {
+  display: none;
+  @include media-above($break-medium) {
+    display: block !important; // Handles an edge case where user resizes after menu is hidden on smaller screens
+  }
+  &.active {
+    display: block;
+  }
+}
 .alignright {
   float: right;
 }

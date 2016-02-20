@@ -53,14 +53,14 @@ module.exports = {
   , chunks: { // Chunks are arrays of paths or globs matching a set of source files; this way you can organize a bunch of scripts that go together into pieces that can then be bundled (above)
       // The core chunk is loaded no matter what; put essential scripts that you want loaded by your theme in here
       core: [
-        modules+'timeago/jquery.timeago.js'
+        modules+'timeago/jquery.timeago.js' // The modules directory contains packages downloaded via npm
       , src+'js/responsive-menu.js'
       , src+'js/core.js'
       ]
       // The pageloader chunk provides an example of how you would add a user-configurable feature to your theme; you can delete this if you wish
       // Have a look at the `src/inc/assets.php` to see how script bundles could be conditionally loaded by a theme
     , pageloader: [
-        modules+'html5-history-api/history.js' // The modules directory contains packages downloaded via npm
+        modules+'html5-history-api/history.js'
       , modules+'spin.js/spin.js'
       , modules+'spin.js/jquery.spin.js'
       , modules+'wp-ajax-page-loader/wp-ajax-page-loader.js'
@@ -72,8 +72,7 @@ module.exports = {
       src: [src+'js/**/*.js'] // Linting checks the quality of the code; we only lint custom scripts, not those under the various modules, so we're relying on the original authors to ship quality code
     }
   , minify: {
-      src: [build+'js/**/*.js', '!'+build+'js/**/*.min.js'] // Avoid recursive min.min.min.js
-    , rename: { suffix: '.min' }
+      src: build+'js/**/*.js'
     , uglify: {} // Default options
     , dest: build+'js/'
     }

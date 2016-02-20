@@ -1,4 +1,4 @@
-// ==== RESPONSIVE NAVIGATION MENU ==== //
+// ==== RESPONSIVE MENU ==== //
 
 // Menu toggle script adapted from _s: https://github.com/Automattic/_s
 ;(function() {
@@ -19,16 +19,12 @@
 
   // Toggle navigation; add or remove a class to both the button and the nav element itself
   button.onclick = function() {
-    if (button.className.indexOf( 'toggled' ) !== -1) {
-      button.className = button.className.replace(' toggled', '');
+    if (button.className.indexOf( 'active' ) !== -1) {
+      nav.style.display = 'none';
+      button.className = button.className.replace(' active', '');
     } else {
-      button.className += ' toggled';
-    }
-
-    if (menu.className.indexOf( 'toggled' ) !== -1) {
-      menu.className = menu.className.replace(' toggled', '');
-    } else {
-      menu.className += ' toggled';
+      nav.style.display = 'block';
+      button.className += ' active';
     }
   };
 } )();

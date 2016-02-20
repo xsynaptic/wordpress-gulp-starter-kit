@@ -9,7 +9,7 @@ var gulp        = require('gulp')
 // Check core scripts for errors
 gulp.task('scripts-lint', function() {
   return gulp.src(config.lint.src)
-  .pipe(plugins.jshint('.jshintrc'))
+  .pipe(plugins.jshint())
   .pipe(plugins.jshint.reporter('default')); // No need to pipe this anywhere
 });
 
@@ -47,8 +47,9 @@ gulp.task('scripts-bundle', ['scripts-lint'], function(){
 // Minify scripts in place
 gulp.task('scripts-minify', ['scripts-bundle'], function(){
   return gulp.src(config.minify.src)
-  .pipe(plugins.rename(config.minify.rename))
+  .pipe(plugins.sourcemaps.init())
   .pipe(plugins.uglify(config.minify.uglify))
+  .pipe(plugins.sourcemaps.write('./'))
   .pipe(gulp.dest(config.minify.dest));
 });
 
