@@ -17,8 +17,8 @@
           <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
           <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
         </div>
+        <button id="responsive-menu-toggle"><?php _e( 'Menu', 'voidx' ); ?></button>
         <nav id="site-navigation" class="site-navigation">
-          <button id="responsive-menu-toggle"><?php _e( 'Menu', 'voidx' ); ?></button>
           <div id="responsive-menu"><?php wp_nav_menu( array( 'theme_location' => 'header', 'menu_id' => 'menu-header', 'menu_class' => 'menu-inline' ) ); ?></div>
         </nav>
       </header>
