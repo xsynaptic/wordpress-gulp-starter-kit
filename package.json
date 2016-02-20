@@ -1,6 +1,6 @@
 {
   "name": "wordpress-gulp-starter-kit",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A starter kit for developing WordPress themes with Gulp",
   "homepage": "https://github.com/synapticism/wordpress-gulp-starter-kit",
   "repository": {
@@ -50,7 +50,7 @@
     "scut": "^1.4.0",
     "spin.js": "^2.3.2",
     "timeago": "^1.5.2",
-    "wp-ajax-page-loader": "^0.2.0"
+    "wp-ajax-page-loader": "^0.2.1"
   },
   "scripts": {
     "postinstall": "gulp setup"
