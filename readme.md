@@ -21,7 +21,8 @@ If you're already up and running with most of the usual Node ecosystem tools thi
 ### REQUIRED
 
 * Install [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
-* Install [Gulp](http://gulpjs.com/): `npm install gulp -g`.
+* Install [Gulp](http://gulpjs.com/): `npm install -g gulp`.
+* Install [JSHint](http://jshint.com/): `npm install -g jshint`. (You can skip this and cut JSHint out of the workflow but it will take some additional work.)
 * Download or clone this repo: `git clone https://github.com/synapticism/wordpress-gulp-starter-kit.git`.
 
 ### OPTIONAL
