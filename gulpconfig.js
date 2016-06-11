@@ -85,8 +85,12 @@ module.exports = {
     , dest: build
     }
   , compiler: 'libsass' // Choose a Sass compiler: 'libsass' or 'rubysass'
-  , autoprefixer: { browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'] } // This tool is magic and you should use it in all your projects :)
-  , minify: { safe: true }
+  , cssnano: {
+      autoprefixer: {
+        add: true
+      , browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'] // This tool is magic and you should use it in all your projects :)
+      }
+    }
   , rubySass: { // Requires the Ruby implementation of Sass; run `gem install sass` if you use this; Compass is *not* included by default
       loadPath: ['./src/scss', bower, modules] // Adds Bower and npm directories to the load path so you can @import directly
     , precision: 6

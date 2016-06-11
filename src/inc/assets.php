@@ -57,8 +57,8 @@ function voidx_enqueue_scripts() {
   if ( !empty( $script_vars ) )
     wp_localize_script( $script_handle, 'voidxVars', $script_vars );
 
-  // Script variables specific to WP AJAX Page Loader (these are separate from the main theme script variables due to the naming requirement; the object must be `PG8Data`)
-  // This appears and NOT in the conditional block (above) because these variables will be attached to the main script handle (which may be modified after the page loader block)
+  // Script variables specific to WP AJAX Page Loader (these are separate from the main theme script variables due to the naming requirement; the object *must* be `PG8Data`)
+  // This appears here and NOT in the conditional block (above) because these variables will be attached to the main script handle (which may be modified after the page loader block)
   if ( !empty( $script_vars_page_loader ) )
     wp_localize_script( $script_handle, 'PG8Data', $script_vars_page_loader );
 
