@@ -60,8 +60,10 @@ function voidx_assets_footer() {
   wp_enqueue_script( $name, get_stylesheet_directory_uri() . '/js/' . $file . '.js', array( 'jquery' ), filemtime( get_template_directory() . '/js/' . $file . '.js' ), true ); // This last `true` is what loads the script in the footer
 
   // Pass variables to scripts at runtime; must be triggered after the script is enqueued; see: http://codex.wordpress.org/Function_Reference/wp_localize_script
-  foreach ( $vars as $var => $data )
-    wp_localize_script( $name, $var, $data );
+  if ( !empty( $vars ) ) {
+    foreach ( $vars as $var => $data )
+      wp_localize_script( $name, $var, $data );
+  }
 }
 add_action( 'wp_enqueue_scripts', 'voidx_assets_footer' );
 
