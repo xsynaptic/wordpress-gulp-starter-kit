@@ -17,6 +17,7 @@
     "supernew": true,
     "globals": {
         "_": true,
-        "jQuery": true
+        "jQuery": true,
+        "svg4everybody": true
     }
 }

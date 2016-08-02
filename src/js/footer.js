@@ -1,6 +1,6 @@
-// ==== CORE ==== //
+// ==== FOOTER ==== //
 
-// A simple wrapper for all your custom jQuery; everything in this file will be run on every page
+// A simple wrapper for all your custom jQuery that belongs in the footer
 ;(function($){
   $(function(){
     // Example integration: JavaScript-based human-readable timestamps

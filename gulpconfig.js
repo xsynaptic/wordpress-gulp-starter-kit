@@ -47,15 +47,20 @@ module.exports = {
 
   scripts: {
     bundles: { // Bundles are defined by a name and an array of chunks (below) to concatenate; warning: this method offers no dependency management!
-      core: ['core']
-    , pageloader: ['pageloader', 'core']
+      footer: ['footer']
+    , header: ['header']
+    , pageloader: ['pageloader', 'footer']
     }
   , chunks: { // Chunks are arrays of paths or globs matching a set of source files; this way you can organize a bunch of scripts that go together into pieces that can then be bundled (above)
-      // The core chunk is loaded no matter what; put essential scripts that you want loaded by your theme in here
-      core: [
+      // The core footer chunk is loaded no matter what; put essential scripts that you want loaded by your theme in here
+      footer: [
         modules+'timeago/jquery.timeago.js' // The modules directory contains packages downloaded via npm
       , src+'js/responsive-menu.js'
-      , src+'js/core.js'
+      , src+'js/footer.js'
+      ]
+    , header: [
+        modules+'svg4everybody/dist/svg4everybody.js'
+      , src+'js/header.js'
       ]
       // The pageloader chunk provides an example of how you would add a user-configurable feature to your theme; you can delete this if you wish
       // Have a look at the `src/inc/assets.php` to see how script bundles could be conditionally loaded by a theme
@@ -76,7 +81,7 @@ module.exports = {
     , uglify: {} // Default options
     , dest: build+'js/'
     }
-  , namespace: 'wp-' // Script filenames will be prefaced with this (optional; leave blank if you have no need for it but be sure to change the corresponding value in `src/inc/assets.php` if you use it)
+  , namespace: 'x-' // Script filenames will be prefaced with this (optional; leave blank if you have no need for it but be sure to change the corresponding value in `src/inc/assets.php` if you use it)
   },
 
   styles: {
