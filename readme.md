@@ -135,15 +135,15 @@ Like images, PHP (and language) files can go anywhere under `src` and will be co
 
 ## EXAMPLE INTEGRATIONS
 
-The bare bones theme included in this starter kit integrates two external JavaScript projects: [timeago](http://timeago.yarp.com/) (which facilitates human-readable timestamps) and [WP AJAX Page Loader](https://github.com/synapticism/wp-ajax-page-loader) (a lightweight and intelligent infinite scroll script). Have a look at the `/src/inc/assets.php` file and `gulpconfig.js` to see how this was accomplished. Timeago required only `npm install -d timeago`, an extra line in `gulpconfig.js`, and initialization in `/src/js/core.js`. Integrating the other script was much more involved; you'll have to browse the source and see for yourself.
+The bare bones theme included in this starter kit integrates three external JavaScript projects: [timeago](http://timeago.yarp.com/) (which facilitates human-readable timestamps), [SVG for Everybody](https://github.com/jonathantneal/svg4everybody), and [WP AJAX Page Loader](https://github.com/synapticism/wp-ajax-page-loader) (a lightweight and intelligent infinite scroll script). Have a look at `/src/inc/assets.php` file and `gulpconfig.js` to see how this works. Timeago requires only `npm install -d timeago`, an extra line in `gulpconfig.js`, and initialization in `/src/js/footer.js`. SVG for Everybody is provided as an example of a script that must be loaded in the header; hence you can see it in action at `/src/js/header.js`. The page loading script is a more involved integraton; browse the source and see for yourself.
 
-Let's say you run across a cool project like [Headroom.js](http://wicky.nillia.ms/headroom.js/) and decide you'd like to try it out. Here's how you would do that with the tools and workflow outlined in this repo:
+Now for one that you can try yourself! Let's say you run across a cool project like [Headroom.js](http://wicky.nillia.ms/headroom.js/) and decide you'd like to try it out. Here's how you would do that with the tools and workflow outlined in this repo:
 
 * `npm install headroom.js --save-dev`. This will save the package to the `devDependencies` field of your `package.json` file.
-* Look up the path to the script and add the appropriate entries to `scripts.bundles` and `scripts.chunks` in `gulpconfig.js`. The key name of `scripts.bundles` should match `$script_name` (below). Since this script is meant to be loaded on every page it is safe to bundle it with the `core` script.
+* Look up the path to the script and add the appropriate entries to `scripts.bundles` and `scripts.chunks` in `gulpconfig.js`. The key name of `scripts.bundles` should match `$script_name` (below). Since this script is meant to be loaded on every page it is safe to bundle it with the `footer` script.
 * To make this script *optional* requires a bit more work:
     * Add an option to `functions-config-defaults.php`: `defined( 'VOIDX_SCRIPTS_HEADROOM' ) || define( 'VOIDX_SCRIPTS_HEADROOM', true );`.
-    * Add the switch to `inc/assets.php`: `if ( VOIDX_SCRIPTS_HEADROOM ) : $script_name .= '-hr';`.
+    * Add the switch to the `voidx_assets_footer` functon in `inc/assets.php`: `if ( VOIDX_SCRIPTS_HEADROOM ) : $file .= '-hr';`.
     * Add an option to `scss/_config.scss` to allow for the styling to be turned on or off: `$plugin-headroom: true;`.
     * Add the necessary styling to `scss/_plugins.scss` wrapped in a conditional check: `@if ($plugin-headroom) { // Style }`.
     * Create an additional script at `src/js/headroom.js` to invoke the main script:
