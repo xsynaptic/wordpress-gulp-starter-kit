@@ -8,7 +8,7 @@ function voidx_assets_header() {
 
   // Header script loading is simplistic in this starter kit but you may want to change what file is loaded based on various conditions; check out the footer asset loader for an example
   $file = 'x-header';
-  wp_enqueue_script( 'voidx-header', get_stylesheet_directory_uri() . '/js/' . $file . '.js', $deps = array(), filemtime( get_template_directory() . '/js/' . $file . '.js' ), false );
+  wp_enqueue_script( 'voidx-header', get_stylesheet_directory_uri() . '/js/' . $file . '.js', $deps = array('jquery'), filemtime( get_template_directory() . '/js/' . $file . '.js' ), false );
 
   // Register and enqueue our main stylesheet with versioning based on last modified time
   wp_register_style( 'voidx-style', get_stylesheet_uri(), $dependencies = array(), filemtime( get_template_directory() . '/style.css' ) );
