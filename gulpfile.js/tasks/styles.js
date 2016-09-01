@@ -1,10 +1,9 @@
 // ==== STYLES ==== //
 
-var gulp          = require('gulp')
-  , gutil         = require('gulp-util')
-  , plugins       = require('gulp-load-plugins')({ camelize: true })
-  , config        = require('../../gulpconfig').styles
-;
+var gulp          = require('gulp'),
+    gutil         = require('gulp-util'),
+    plugins       = require('gulp-load-plugins')({ camelize: true }),
+    config        = require('../../gulpconfig').styles;
 
 // Build stylesheets from source Sass files, post-process, and write source maps (for debugging) with rubySass
 gulp.task('styles-rubysass', function() {
