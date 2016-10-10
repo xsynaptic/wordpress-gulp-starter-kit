@@ -17,9 +17,9 @@
   "license": "GPL-3.0",
   "authors": [
     {
-      "name": "Alexander Synaptic",
-      "email": "alexander@synapticism.com",
-      "homepage": "http://alexandersynaptic.com"
+      "name": "Your Name Here",
+      "email": "your@email.com",
+      "homepage": "http://yourwebsite.com"
     }
   ],
   "type": "library"
