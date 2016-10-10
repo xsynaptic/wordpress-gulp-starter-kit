@@ -18,7 +18,7 @@ gulp.task('styles-rubysass', function() {
 gulp.task('styles-libsass', function() {
   return gulp.src(config.build.src)
   .pipe(plugins.sourcemaps.init()) // Note that sourcemaps need to be initialized with libsass
-  .pipe(plugins.sass(config.libsass))
+  .pipe(plugins.sass(config.libsass).on('error', plugins.sass.logError))
   .pipe(plugins.cssnano(config.cssnano))
   .pipe(plugins.sourcemaps.write('./'))
   .pipe(gulp.dest(config.build.dest));
