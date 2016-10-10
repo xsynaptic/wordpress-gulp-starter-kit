@@ -5,16 +5,22 @@ var gulp        = require('gulp'),
     merge       = require('merge-stream'),
     config      = require('../../gulpconfig').scripts;
 
-// Check core scripts for errors
-gulp.task('scripts-lint', function() {
-  return gulp.src(config.lint.src)
+// Check core scripts for errors with ESLint (preferred) or JSHint (old way); no destination required for either task
+gulp.task('scripts-eslint', function() {
+  return gulp.src(config.eslint.src)
+  .pipe(plugins.eslint())
+  .pipe(plugins.eslint.format())
+  .pipe(plugins.eslint.failAfterError());
+});
+gulp.task('scripts-jshint', function() {
+  return gulp.src(config.jshint.src)
   .pipe(plugins.jshint())
-  .pipe(plugins.jshint.reporter('default')); // No need to pipe this anywhere
+  .pipe(plugins.jshint.reporter('default'));
 });
 
 // Generate script bundles as defined in the configuration file
 // Adapted from https://github.com/gulpjs/gulp/blob/master/docs/recipes/running-task-steps-per-folder.md
-gulp.task('scripts-bundle', ['scripts-lint'], function(){
+gulp.task('scripts-bundle', ['scripts-'+config.linter], function(){
   var bundles = [];
 
   // Iterate through all bundles defined in the configuration

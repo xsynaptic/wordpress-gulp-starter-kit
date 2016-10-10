@@ -1,0 +1,12 @@
+// ==== SETUP ==== //
+
+// This file imports all dependencies; nothing here should actually render any CSS; this is solely for variable, function, and mixin definitions
+
+// Scut, a Sass utilities library: https://davidtheclark.github.io/scut/
+@import "scut";
+
+// Configuration variables and settings
+@import "config";
+
+// Library: mixins, functions, etc. specific to this theme
+@import "library";

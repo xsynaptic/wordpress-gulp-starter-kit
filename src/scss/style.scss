@@ -1,41 +1,19 @@
-// ==== STYLES ==== //
+// ==== STYLE.CSS ==== //
 
-// Do not declare anything before the metadata block; this first section is solely for variable, function, and mixin definitions
-// Note: `bower_components` is already in Sass's path
-
-// Scut, a Sass utilities library: https://davidtheclark.github.io/scut/
-@import "scut";
-
-// Configuration variables and settings
-@import "config";
-
-// Library: mixins, functions, etc. specific to this theme
-@import "library";
+// This theme generates the required `style.css` file so WordPress recognizes this theme
+// It is *not* necessary that this file actually include your theme's CSS; this is loaded separately
+// Alter these settings in the main project configuration file; do not edit or move this file!
 
 /*!
-Theme Name: #{metadata(theme-name)}
-Theme URI: #{metadata(theme-uri)}
-Author: #{metadata(theme-author)}
-Author URI: #{metadata(theme-author-uri)}
-Description: #{metadata(theme-description)}
-Version: #{metadata(theme-version)}
-License: #{metadata(theme-license)}
-License URI: #{metadata(theme-license-uri)}
-Tags: #{metadata(theme-tags)}
-Text Domain: #{metadata(theme-text-domain)}
-Domain Path: #{metadata(theme-text-domain-path)}
+Theme Name: {{theme.name}}
+Theme URI: {{theme.uri}}
+Author: {{theme.author}}
+Author URI: {{theme.authorUri}}
+Description: {{theme.description}}
+Version: {{theme.version}}
+License: {{theme.license}}
+License URI: {{theme.licenseUri}}
+Tags: {{theme.tags}}
+Text Domain: {{theme.textDomain}}
+Domain Path: {{theme.textDomainPath}}
 */
-
-// Reset: eliminate default browser styling (optional; commented out by default)
-//@import "reset";
-
-// Normalize: make browsers render things more consistently
-@import "normalize";
-
-// Everything else
-@import "helpers";
-@import "general";
-@import "layout";
-@import "menus";
-@import "navigation";
-@import "sidebar";

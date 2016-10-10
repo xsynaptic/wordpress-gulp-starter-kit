@@ -55,8 +55,3 @@
 @function color($request) {
   @return config($_color, $request);
 }
-
-// Same thing for theme metadata
-@function metadata($request) {
-  @return config($_metadata, $request);
-}

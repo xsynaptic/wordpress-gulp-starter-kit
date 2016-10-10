@@ -1,0 +1,4 @@
+// This file outputs the main theme stylesheet to `/build/css/theme.css` by default
+@import "../lib/setup";
+@import "normalize";
+@import "../lib/render";

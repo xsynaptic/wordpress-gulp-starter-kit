@@ -1,0 +1,26 @@
+// ==== CONFIGURATION ==== //
+
+// Set all your configuration variables here!
+// Anything wrapped in double braces will be replaced by the equivalent value in the main configuration file
+// Note: only changes to the original configuration file template (`/src/scss/templates/_config.scss`) will be copied to your theme
+
+// Width of the overall site as well as the left and right content columns
+$width-site:    {{sizes.site}}px;
+$width-left:    {{sizes.left}}px;
+$width-right:   {{sizes.right}}px;
+
+// Breakpoints
+$break-small:   480px;
+$break-medium:  620px;
+$break-large:   800px;
+
+// A standard margin
+$spacer:        30px;
+
+// A modest palette; see `_library.scss` for the color() function
+$_color: (
+  text: #333,
+  link: steelblue,
+  link-muted: steelblue,
+  body-background: white
+);
